@@ -15,12 +15,10 @@ from productcatalog.models.core import core
 nymph_service_name = "productcatalog"
 nymph_service_version = "1"
 
-#@nymph.extension( service = nymph_service_name, version = nymph_service_version )
-#@nymph.signature(in : "Void" , "out" : f"Collection[{nymph_service_name}.Plan]")
 @nymph.resultify
-@nymph.signature(input="Void", output= f"nymph.Collection[{nymph_service_name}.{core.Categories.type}]")
-def get_categories(dep, **kwargs):
-    productcatalog = CHECK_DEPENDENCY(dep, nymph_service_name, "get_categories")
+@nymph.signature(input="Void", output= f"nymph.Collection[{nymph_service_name}.{core.Product.type}]")
+def add_product(dep, **kwargs):
+    productcatalog = CHECK_DEPENDENCY(dep, nymph_service_name, "add_product")
     """if not peeringdb:
         raise Nymph.DEPENDENCY_NOT_PRESENT
 
@@ -28,33 +26,12 @@ def get_categories(dep, **kwargs):
          raise Nymph.SIGNATURE_NO_MATCH
     """
     ##########
-    endpoint = lambda : "categories"
+    endpoint = lambda : "product"
     args = kwargs['args']
-    do_rest_call = productcatalog.send_authorized_request(endpoint=endpoint, rtype=RestType.GET, streaming=True)
+    do_rest_call = productcatalog.send_authorized_request(endpoint=endpoint, rtype=RestType.POST, streaming=True)
     res = do_rest_call(args).json()
     return res
-
-
-@nymph.resultify
-@nymph.signature(input="Void", output= f"nymph.Collection[{nymph_service_name}.{core.Products.type}]")
-def get_products(dep, **kwargs):
-    productcatalog = CHECK_DEPENDENCY(dep, nymph_service_name, "get_categories")
-    """if not peeringdb:
-        raise Nymph.DEPENDENCY_NOT_PRESENT
-
-     if not CHECK_SIGNATURE():
-         raise Nymph.SIGNATURE_NO_MATCH
-    """
-    ##########
-    endpoint = lambda : "products"
-    args = kwargs['args']
-    do_rest_call = productcatalog.send_authorized_request(endpoint=endpoint, rtype=RestType.GET, streaming=True)
-    res = do_rest_call(args).json()
-    return res
-
-
 
 nymph_extension_list = {
-    "get_products" : get_products,
-    "get_categories" : get_categories
+    "add_product" : add_product
 }
