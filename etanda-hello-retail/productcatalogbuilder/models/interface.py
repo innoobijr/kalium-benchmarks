@@ -12,20 +12,20 @@ from nymph.util.fp import compose
 
 from nymph.models.auth import AuthType, AdminAuthType
 from nymph.util.logging.logging import logger
-from productcatalog.models.channel import ProductCatalogApi
+from productcatalogbuilder.models.channel import ProductCatalogBuilderApi
 
-class ProductCatalog(NymphInterface):
+class ProductCatalogBuilder(NymphInterface):
 
     session = None
 
     def __init__(self, auth_type, config):
         super().__init__(auth_type, config)
-        self.channel = ProductCatalogApi(self, config)
+        self.channel = ProductCatalogBuilderApi(self, config)
         self.auth_type = auth_type
 
         # Match on the authentication types
     #**************************************************************
-    #|        Configuration Management for ProductCatalog Controller      |
+    #|        Configuration Management for ProductCatalogBuilder Controller      |
     #**************************************************************
 
     def send_authorized_request(self, **kwargs):

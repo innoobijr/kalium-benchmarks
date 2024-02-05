@@ -10,7 +10,7 @@ import time
 # this can be removed in order to remove the dependency
 
 
-class ProductCatalogApi(RestAPI):
+class ProductCatalogBuilderApi(RestAPI):
     session = None
     auth_state = {}
     environment = 'none'

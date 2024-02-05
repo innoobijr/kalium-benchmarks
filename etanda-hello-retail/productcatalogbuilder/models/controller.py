@@ -20,14 +20,14 @@ from nymph.storage.db.engine import NymphDB
 from nymph.util.helpers import parse_message, read_yaml_conf, validate_message, format_message
 from nymph.util.logging.logging import logger
 
-from productcatalog.extension.productcatalog import nymph_extension_list
-from productcatalog.models.interface import ProductCatalog as productcatalog_if
+from productcatalogbuilder.extension.productcatalogbuilder import nymph_extension_list
+from productcatalogbuilder.models.interface import ProductCatalogBuilder as productcatalogbuilder_if
 from cryptography.fernet import Fernet
 
 from eventlet.green import socket
 
-class ProductCatalog(NymphController):
-    service_name = "productcatalog"
+class ProductCatalogBuilder(NymphController):
+    service_name = "productcatalogbuilder"
     __if = None
 
     def __init__(self, host, port, conf_path, threads):
@@ -137,12 +137,12 @@ class ProductCatalog(NymphController):
             break
 
     def if_config(self):
-        self.__if = productcatalog_if(AuthType(self.ifconfig['auth_type']), self.ifconfig)
+        self.__if = productcatalogbuilder_if(AuthType(self.ifconfig['auth_type']), self.ifconfig)
         print(self.ifconfig)
         self.__if.channel.warm_up()
         logger.warning("warsming up")
         with self.db.session() as session:
-            service = session.query(Service).filter_by(namespace="productcatalog")
+            service = session.query(Service).filter_by(namespace="productcatalogbuilder")
             print(service.first())
             if( service.first().creds):
                 self.__if.channel.auth_state = json.loads(service.first().creds)
