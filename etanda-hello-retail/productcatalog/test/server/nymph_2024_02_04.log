@@ -1,0 +1,42 @@
+[ nymph : ERROR ] : warm_up
+[ nymph : WARNING ] : warsming up
+[ nymph : WARNING ] : Authsate is: {'tanda-key': 'w_mx_mmQf0SJ21uwM9GWbFzGyk5De19meUM3ysfENh8=', 'user': 'abc', 'password': 'xyz'}
+[ nymph : INFO ] : configuration successful, starting server
+[ nymph : INFO ] : gAAAAABlvtObQ4LmTj5To3TQaL6JCp4kfWhBkDe9pvhq9SrxFgm5h8u5dDC577h2AkMANSvQQ7UPX-6zX6TWivBNGzektw0Lptsa3v_ChBDfxQhFgJCgrHM_okGbrW-nucMi-BFUQjeg4G6scxs1w-jvG86CNHky-3kH8RjNrtil51DqGwggKtv40Lw6OVo70LCmv6pr7gOjW1zFU73I5Aa27zY-4kSOIX60KsKV48XUZnA1YGsLa4nP5YP_OXcTINLVC84OfOsN8vpsRbTLqfB45kwUCk7vGHFCbmcZ6cH-CgPDeTrWjJkHsjymd1ZVO4v8RftGqVNy_kaGj_ws-cDyYmhkWonWI49nbWEQV7mk1t0CsIPuqKKOJcfLibMXpWZfEEYf6LtmwkOMBYNakSCAblrX4U2hiVXseCq3cQkQ6aVdyeVmnuSv5x-8CgLJRyz7uthDOhiSKlp8xzSUksxZirjY810KjiiVj9wW37tWH_juosV6ki0E8mqsWJp3ZwiPi_Q1uMUAWbn3aLihDn5KxokWV1MPExnJdmBx7yBZdbaDGIUwGEF9USxyMckHQSZjRo-xxbWp4hYG2sM8c1lQ4Yop1KMD2v9hTAOAeMz1-jehsWtah4VyHF7hh2-O-hjEZv5fzLob_tSDIDRoxiI0c6IfuQImV5MDuHqErc8FHrpDSX4fc_8iT-FKeZOEl6uBHNDGgqDIstRaNMWynBN_SLo7nAmdFm9fxFX_kDGqySal-woSK-A0hVS4p0QrcHNJdXFs7x9qVrFE2DxCeLXiC-6V44KGpVW4Fc2ECzTJPJIbzFrlIJdX1dnHy0eI-GX5lIKiKWnsXZ5Kfd9VAW0RzVJnG425vsBWad2rezm4grqxQMX4bD1QkQAylnODUmI_i_gMRYMb
+
+[ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
+[ nymph : ERROR ] : warm_up
+[ nymph : WARNING ] : warsming up
+[ nymph : WARNING ] : Authsate is: {'tanda-key': 'w_mx_mmQf0SJ21uwM9GWbFzGyk5De19meUM3ysfENh8=', 'user': 'abc', 'password': 'xyz'}
+[ nymph : INFO ] : configuration successful, starting server
+[ nymph : INFO ] : gAAAAABlvtTSwL4DKSRwCRFGtfPUiui0QP8N7WpoXpPAhx4p-uyOmETORiFZ8KsgYSYDtCdGvt_2qKf0n99d8HDG8ihzjvPEGJ5AY2wnp4leVoUdlIzYTmlWDwn7_rPFFL054bOMj9YJ54jIS7KVFRO3JZoCERpnb03JCgoBUZPV2vHmIWMzqJPDR2G7zwAXDZRByjeHrahRw2CdEwVD8cVpobGyAOey1LcYfQCZqvkhxHN2GylJvFGq1euf0iJ5yhKvRSvb8cA4-6OMSdAYim8ixwppAPvbQuHUOAlG650_Rk5YL4Ymz5q9Hrekt9-AUbU7Q8HX7DLcDGAm2hIRiNyUdGKkSphOnJs9FG9GbDKwtrtv0HX6Q37pAlFkw6uW7Ute3Trrlc5B_ZHT7OwsPAwcz0zpPqxdJsj9SEDnlyAZrd44Z_k1J1S8e9N-SLJp61kxyIxwIZ0FvxNsC79QPa-iDvBwo9s6BoUdqHxDid33CKfuvnaMkB59mssmpZlHzIgkk9okgto5UAozuLaQvyxnAS9WMf6-9KvJbzluIau4FQt7ruyvCuJPB1HB5dFDRQoBwY1DWHLK_TKSq9awF0eq2lm_Dkzj2KvjnXgwFc1Hga4utsf9gNwajErNgAc2aNwJaY5bjciAs-Lj8HdLz4TlTRyLXPaHijOzxALnnAErlJbpCQN2DEGaF7QMrvAYpX9EzV0OLGrrCWrBsXN5_YYXporwoipqVqH-m3e0uaaFN_oGlT1nwbML6l88OS3qHBJXHxONt_ErLXUACBTWEvtbMppNuPaHW-8haejeLReAetxKFo-76q_ydZ93EWKkQNHUc0ILFQqp1PogmjydODiRlwuqVAfYf7pHrAa8JlYsQXXKTA_2aHYCZ4q0qKBGYGGlFw7a2-SX
+
+[ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
+[ nymph : INFO ] : something: Result(type=1, value=<Response [200]>, signature='nymph.Collection[productcatalog.Product]', ntype=2)
+[ nymph : ERROR ] : warm_up
+[ nymph : WARNING ] : warsming up
+[ nymph : WARNING ] : Authsate is: {'tanda-key': 'w_mx_mmQf0SJ21uwM9GWbFzGyk5De19meUM3ysfENh8=', 'user': 'abc', 'password': 'xyz'}
+[ nymph : INFO ] : configuration successful, starting server
+[ nymph : INFO ] : gAAAAABlvtTtsu75NPQBLpg7K-1ajme0K6I6kDvE05WqvJkrnHzSpQCytxw54Pti3dKeHoB9P5loPA-iPocbO6_Si5YVBWuKl4PYCy4CCtbjf3PkbGTVgaDwvt1jJQivQYJ3ml_TbonLoof9hw8wq43yinDqeo_Xi32nBySz-7QwBJcuVeBWMEGu0hWj0X4Z7hWrjCLPzTdtQPYsWiyuGT4JfpYYRBcnAqpjEJ4Ya6raQ0suLPceZWWMM2qVkLROm6r4GcT9EncZzl9VBEFEUecm6KVonDwIOc1QMrC6F-iYGVGj8OQeVzIW3Bg6D8GoMUHH4uh6qXQ2mDXbiIZcielW6dYPMcyl5O3t_k76b5eN_LMAr7iPxxHz-ZIdzDqrqqBEcknFc_TTntdDhZ8Fnwa_HlIVoCnuCJSmQncBwMRoZW6pbmqaymQRsz8aLo3_0h5LBaLc_gEtygyYwQr98pVo0HaNfi8_1ktDlUm7eMhNWPMxKKZ_LUR6W1HOw1ho3mCKxCZVNZhtEqZyPH52SMdBi424jYWOH6wCfUDOYqD1Vu6qUEEtiYn0WaqsNUb0GEmaD0rBAmzoVvAbSDaUya9AsOvdzk8Qk8bRC7trsEYViNCasTTZV3Pv5ex626Ea9DZ4ekLrPFNs3eu9Hu4BpYVsz8mkgRLuNznIkAYLcd_gfpUhBYDCUW1BP28b7ScgM1FzpicEEKgliRYUyIRw9tJGr54D6pX8x9hJVwZbyk7xpcR24_PYkBdXPgoYv0tQDrc8yVED112j76UVEqPzcDLibQKDSOhC4zsA_dcxdocRbEirpZnKr42S2M6YlUqXVVkYnmoBMyAP_mMN7h1Cwx_sy3xcQNuyOzrgHXEd0t6fjAagNaxOv9OPG4IYIPk-2R2Fa06lMZFK
+
+[ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
+[ nymph : ERROR ] : warm_up
+[ nymph : WARNING ] : warsming up
+[ nymph : WARNING ] : Authsate is: {'tanda-key': 'w_mx_mmQf0SJ21uwM9GWbFzGyk5De19meUM3ysfENh8=', 'user': 'abc', 'password': 'xyz'}
+[ nymph : INFO ] : configuration successful, starting server
+[ nymph : INFO ] : gAAAAABlvtUhgFywAjEUL-AM4_qWBSg0756QoFZv8cfPt3kBZyseHS7_3frt8DigY4gPJeaOEK1fLJJvab4_ENi-bIbivbB7dc1Qr3_vnuKPjGuEjzVCbJdBHj9SGpcZGaTae-jObQBy_o0DP__mutdDPV0GAno9xYkm_KHaIK2RZ_RKVzQ85ofXpF26bjbWsaVXcxtNqIv8GmyKXTkDkqTzcdBBRHaglj9OlPvEPFZbb1s1Thbll62KczreCNddYqxOPGooryHHqZrQEhZ1qQ7WMIgEMRbTtIeImS8gsDH5ZCPGTDSMRESOY1q6dXXB7HXit8UkEYjVpT0hKZ6GQ-I00K4Wnqb1JI6Lci7PS8IXQ15-fOXsfqv616WAA174_WeZzGPG0zP5bGhLgLbnacNnOrKU0mUbUqDLyK7SVGYi4z_x12vytMvmUYBTxY7SWHmOoUBM0daJc7PurKbLuu3Kq-1o7APcEoWxaA9g7YbAohAtevmL3SMcamkQ30bTKDBrn_RvpcqKXdcn4O0sK8FIpWlz6fwublsSiuP4QfM43TF_J4AYUWjkzUMp_XZEa5SPuCTzqaAtxiddzQuPCtA-6HRYQHnt8HcsN7i675MUFUm6hf0US_qpmEIU38amK4cDpPnsyWo_P-TqYJE7OhWiat4m_GThWtQJ39LFmv5q_LxOauQKDf9Fi2vgw_KqXtp3kcpEffyDltRY0Ezd16u_OWk8gOLf6VgopOA4c7WGSirBkDKhdRyguwqRCuYcxhR9C-tNbTFIj2aFKTFSFh1MutX2T4NIvjVYPTBoBnAG_4OZp23SF1LVZEcFM0cTC4rluCIFOS2Ya7HaU75RWroMzxM_pSwwRBHomguoz80eIT39NIYJcOXKTIl_FyZea6j_JXjTdPos
+
+[ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
+[ nymph : INFO ] : something: Result(type=1, value=<Response [200]>, signature='nymph.Collection[productcatalog.Product]', ntype=2)
+[ nymph : ERROR ] : warm_up
+[ nymph : WARNING ] : warsming up
+[ nymph : WARNING ] : Authsate is: {'tanda-key': 'w_mx_mmQf0SJ21uwM9GWbFzGyk5De19meUM3ysfENh8=', 'user': 'abc', 'password': 'xyz'}
+[ nymph : INFO ] : configuration successful, starting server
+[ nymph : INFO ] : gAAAAABlvtWD4M6NF3Pa-wOWr89C6z4urNGEbBTqXNJVvaSjDX-DJud7fs8rg1Fu30lKjnshZuHdepHjZRlLXFksJoq6qCPnHM_oX8uxCeneZkl4XQVRY50bzKq0LQFK5Rigo8TI5GUH41fesIoaeaUKbYo2LEP_Dhr0_MDOHu_pux1jBPK3b0bJRVs7P68vMl2DzY69_stfPQLKa7Upo-hSqGNqPexoY1Ol4-AWtQf_AU-CK38RNxfFjUnv40Pi4O66XVuFTvE25Wg2achE40-cJchWUjlZv82Bm2W_StkBpL2IEBToih8MOAwftDhJiTqziuoo8Y-GliaXHvWRJcAgMowE_8a7Rq6qeePHONK3jQ-RIvmXprU9ziC9xcGkdyCx5ZpOmBVQty1lbGwQW3sIcOzeQxOrE494oAlZk6tiDX3KQYlzyqIqdm0btAdZdRbW6FdFk2g1-OgQKlM9X7D2vP5-xQIxpK2Ye8KQDRPhjO4MNMAdTzIy02BkQAjdVO15HRjoSK5V8Z3_MF7WuibWDWrkAPqJfALFDE8UdP62R96_PNuy92Sa5JGfdX3DGuhyXEHE2Mf_icEMi2P43hP2K-uI6Dyr-CitYmmADglysaKmUcvSV-AcmSYN39pcEfJouQPDmTzr2zjwvoOgDgf7CV8SI-WA9wFK6d8eHtX17Xw-ofGrEeH2EgoTEJnhjK4STO7vv-bc1G5vwolLrO8a0z34sh0v6kq4W5QW9G13YuJCKrjSJ-9ePIRLgwhVEqHA2toxJKGGeaX1e_0w3d3uMpLKL6sB1-fTo1nZbG0jLtG-VguCCgOQre549g9hREKiawGDQJiCiMkyWPx8QXGDWx_S9UuOqecZEiMo4qywJXn02H0VwxjSaH0OTCEQm3l-TcVQqS1z
+
+[ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
+[ nymph : INFO ] : something: Result(type=1, value={}, signature='nymph.Collection[productcatalog.Product]', ntype=2)
+[ nymph : INFO ] : gAAAAABlvtW23nZcDv_WC-fGwrqBf2WB5u7u96KXhaC3OlyYdcmO7BMuvDK1KQCLHYDOI16DYaG4GHA6ROyYuzBN_vL2kLNaq2TtrxQZFLFsM8TWX2Iv38d5HmVjGwU9BWkgioxPBj0dfPuCQL0oILnLFjW0CKRqf5gNiZb83fae3DL1TNMkKS0esRZSwdm2b3jkZ86oSEcOjsWM2ILhQfLsh-lah_W9H5Q38tjYUV-zQ4Ovkp-WOMe-2p66FFHBul9E3V5w1Nkv5ZZUW24DoscPl1tLzsXulzGItJEtG8dNC9IG_9RG4BuY85JEV1jrQi5VkS3VUUmD-5GIuzjJZfQT84vAPT4_HxL5eDHekO1LUcUUTr_i1d7YtqekzdpHa1pHq9MeVoYXtDbEDokoFCVqk5xsHH04KYjGKr5H4EtT0W62rfO3GJUGnXcjb3bChAQ7pdqooma2oP7UzPpTWpfzu52m5xW_ohJrqJn9rG1S0p9BJhMUilhiBMKV1dPufHUBYQVMnT2-4B-QE53pb519JQ06GrfJ66q-27KHnNhmqcgBzYdnkt70Xssxq91G7rRSliGWnPcd0jXYpSPDfGMqOsyNTmJGd3w9IlstOXbgGLf7nW2mhfVogk3URTJU_SYVFKyAdCPzElUs2uBlp_u58uuTsjjbeUSWhIKby9c6BBN8H-3u3CFBtieSDA5nMFQ5iGWcgncugSg5UaiCNf7vZGluvU0okXZDyd1PY_uULYhPRIt44HOt3ncv7jpBvRHGQlpOccK_A9S2WQS5zDVyHH4J1DYTnQUaeW0ckay90ve3tZms4aXw3qUgv8viwEDuvHxT1orRQC5tkI4-Hz4qG3oAmAQcqS0v8fQsSTXYmBpUIm3R3mVqU2WQzXj8vIJgR4_LL7f7
+
+[ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
+[ nymph : INFO ] : something: Result(type=1, value={}, signature='nymph.Collection[productcatalog.Product]', ntype=2)

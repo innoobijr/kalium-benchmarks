@@ -41,15 +41,13 @@ class ProductCatalog(NymphInterface):
         if (streaming):
             config['stream'] = True
 
-        logger.warn(f"API Key is: {self.channel.auth_state['api-key']}") ## TODO: get the states
-
         header = {
-                "Access-Control-Allow-Origin": '*',
-                'Access-Control-Allow-Credentials': True,
-                "Authorization": "Api-Key {}".format(self.channel.auth_state['api-key']),
-                "Accept": f"{ctype}"}
+                'Content-Type': f"{ctype}"
+                }
 
         uri = '/'.join([self.config['base'], endpoint()])
+
+        logger.error(uri)
 
         response = self.channel.make_request(rtype, uri=uri, query=query, header=header, config=config)
         #logger.error(response)

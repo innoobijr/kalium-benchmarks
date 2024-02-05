@@ -21,7 +21,7 @@ from nymph.util.helpers import parse_message, read_yaml_conf, validate_message, 
 from nymph.util.logging.logging import logger
 
 from productcatalog.extension.productcatalog import nymph_extension_list
-from productcatalog.models.interface import productcatalog as productcatalog_if
+from productcatalog.models.interface import ProductCatalog as productcatalog_if
 from cryptography.fernet import Fernet
 
 from eventlet.green import socket
@@ -51,8 +51,10 @@ class ProductCatalog(NymphController):
     def bind(self, message):
         if (NymphMessageDirection(message.direction) == NymphMessageDirection.CALL):
             proc = self.services.get(message.procedure, None)
-            #print(message.args)
+            print(message.args)
             return self.executor.submit(proc, {self.service_name: self.__if}, args=message.args)
+        else:
+            logger.error("not a call")
 
     def serve(self):
         server = eventlet.listen(( self.host, self.port))

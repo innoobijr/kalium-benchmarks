@@ -1,5 +1,5 @@
-from productcatalog.models.interface import productcatalog as productcatalog_if
-from productcatalog.models.controller import productcatalog as productcatalog_ct
+from productcatalog.models.interface import ProductCatalog as productcatalog_if
+from productcatalog.models.controller import ProductCatalog as productcatalog_ct
 from nymph.models.auth import AuthType
 import pickle
 import yaml
@@ -14,8 +14,8 @@ if __name__ == "__main__":
 
     controller = productcatalog_ct(
             host = "127.0.0.1", 
-            port = 6666, 
-            conf_path = "/Users/innocentobijr/Desktop/ConvergedTechnologyNetworks/sandbox/nymph/conf/services.yml", 
+            port = 6690, 
+            conf_path = "/home/etanda/nymph/conf/services.yml", 
             threads = 5)
     
     asyncio.run(controller.run())

@@ -1,0 +1,8 @@
+[ nymph : ERROR ] : warm_up
+[ nymph : WARNING ] : warsming up
+[ nymph : WARNING ] : Authsate is: {'tanda-key': 'w_mx_mmQf0SJ21uwM9GWbFzGyk5De19meUM3ysfENh8=', 'user': 'abc', 'password': 'xyz'}
+[ nymph : INFO ] : configuration successful, starting server
+[ nymph : INFO ] : gAAAAABlwEITp72AqUhmwbqsBX9bz6bIDLRRhyScgoK6Y5Znt3Kl8hVbeovQSvrqmjm1-S7WIHK7p0DCyVMHmBBPRPws_BVGnXdiDyznW29uq7tYbtSjidiVyyYaDUJriK7DvvU1-Pb9UvkS0RWBVLle3D0z-E-w3T1yo_Wzyg61Lvtiu2FF4MYPrqGanU8qofpVdwRTjFH0R1u4aBp2qlz3w6DvWJbsnmC2cDTiEL_CLVhSjee9EQ4Wkc0RxdAap7NUqVujUPOMjveDpwP3V9lpJbBZ9I_55zoA4Y5LbOdKUVnQxYlw1Yo2mIRyr4wr9zQrvFCnGG_ZIg2IdlLJZGWlLdYkfgpFuacXmjOMqj7ac-AgjJBhFAQIbzXXtqffhTJDBUnY0j_XioMsr-sjzsjBt-Xx5B-wuzdR43UuPBw855z4TePv4Vzz5zarNyZqadkbb8x5NsnRjjedivWyzqvXAcO7B36_pXoARi2qQVB_ybvc3dXkfKCLpPIsPRkAbsgX7C-OFEOqaTLhCIx09KzLCSuyWyE6fXbTfv44Lq2YesYR-kb96KTPZUmGU9toOlbctHpeCQdbUw7RIZV8EEB4HMK567IpL_cIRSw2If1qIW-wzTpO7Hd9d73Z4GBKhC7FF85JdyyN9V1oeHK2tiQoeBlNPeHFqaXZnGT0_DmQchztDjv8tgF1I1ysgpKrkzNQTHEQ0_i8Hq0FPYXOoi-5ajDiSZd8fCVAOOlpGKAK1rDg0bq-zyjhgZJEHf_NLqJwT3gG32Lr1TCL_NNiEmhMy2G8qphgx_W4pGEYds8ky1xl7OvOs2yCpnjPaIBPDoweZvzKaOw6C_VJ_FFBKD33kyxOwbwQy610nw9xdHS60nNUS_-eFqm5NTEIIj4jilE9H5UN4iMN
+
+[ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
+[ nymph : INFO ] : something: Result(type=1, value={}, signature='nymph.Collection[productcatalog.Product]', ntype=2)

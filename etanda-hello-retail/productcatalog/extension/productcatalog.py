@@ -28,9 +28,10 @@ def add_product(dep, **kwargs):
     ##########
     endpoint = lambda : "product"
     args = kwargs['args']
-    do_rest_call = productcatalog.send_authorized_request(endpoint=endpoint, rtype=RestType.POST, streaming=True)
-    res = do_rest_call(args).json()
-    return res
+    do_rest_call = productcatalog.send_authorized_request(endpoint=endpoint, rtype=RestType.POST)
+    res = do_rest_call(args)
+    print(res)
+    return {}
 
 nymph_extension_list = {
     "add_product" : add_product

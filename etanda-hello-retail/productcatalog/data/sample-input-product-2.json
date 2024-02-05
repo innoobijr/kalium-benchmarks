@@ -1,0 +1,15 @@
+{
+    "schema": "com.nordstrom/retail-stream/1-0-0",
+    "origin": "eto/hello-retail/product-producer-automation",
+     "timeOrigin": "2017-01-12T18:29:25.171Z",
+     "price: ": "123",
+     "data": {
+     "schema": "com.nordstrom/product/create/1-0-0",
+     "id": "5079874",
+     "brand": "Goodfellow",
+     "name": "3-Pack Men Underwear",
+     "description": "PAGE:/s/polo-ralph-lauren-3-pack-socks/4579874",
+     "category": "Men's Undergarments",
+     "price": "123"
+   }
+}
