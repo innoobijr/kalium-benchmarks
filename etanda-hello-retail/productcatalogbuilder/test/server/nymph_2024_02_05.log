@@ -6,3 +6,10 @@
 
 [ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
 [ nymph : INFO ] : something: Result(type=1, value={}, signature='nymph.Collection[productcatalog.Product]', ntype=2)
+[ nymph : ERROR ] : warm_up
+[ nymph : WARNING ] : warsming up
+[ nymph : INFO ] : configuration successful, starting server
+[ nymph : INFO ] : gAAAAABlwUJpn1xHWhViSkSm8Y08ERqjhq-MrJEQm7uFl3s4_aGGadUsRQs7n7B5YPwzixWbcGiMHU921O75HpnmvNlFBQYPlWYy3QG1e_WOhzy8lBDBvGzXIlSYIxKy6KdsIKxBv73vK1XZUDA5ZNkBukIfi8f0JnAOBeQpj_7YixIEvS-bJyqCX4kh9aJNQN6diOI8xWoKrFknmXq5vgUWtcQdkQHFwqoZj8OxgF1FfQIm5u6Z7oBN0FY_szO_ICjVAX_cqnWvy5opMZYmcdn5QsPgyRs4OHWMM2ji0EVaQzCEFM3fj8VKkFxG50v7Raw23SC_aWjraviuumfPXOG2kK53ilWGx1tTSQ8Z9QqjLwRRYZN1e1kStaHpz_CmBJCg1VF8aLy42H26lA_X2_BoYHdT6dVKU0zh9vnGJQxmZeGraAfU2lr9M1PfuFpRQGeqSEpdcWSzslfgpN3uhhnYLBMV1uPHGE3GNVVyweBl2W4iw18-fzMh00Pc-NtSFAvb5Wj9dyyhRFXBRvW6GLU-Ln20EM1i4kDjdFkbL4N9rxe5ybmrpfYy_NFE42yljw_jT03J4XGAF8YrFto0U8MXKfgcQXrxApWQr3YPNWHXOV3i97qGLCOEghhSdifa7t3jZS8RK8T6E1v5RbelGhvDy5XMQcmnX7AJhTp-GoVGsDlRBuW2gOYP4FVe45QOB-bilGgAI3eDE8j3fwFflFOqkgn6MJOZEpvHD1lpYCRDi5NAKInPBDZIZCebwEIzEJsn2fG5O_NhLjXlE-xdz8gQJil2PCBfm_Il3f0Y_0FhrNR7U8_yPBXANZreHFlA1GfMjqTQhb5-Bv1iwBhS_aVMm4hxr-RLmPfQl-pGo_UZR0dqHxivqCfwxqSqiKcHxbwYOq5gl070
+
+[ nymph : ERROR ] : http://127.0.0.1:8080/function/product-catalog-builder/product
+[ nymph : INFO ] : something: Result(type=1, value={}, signature='nymph.Collection[productcatalogbuilder.Product]', ntype=2)
