@@ -5,10 +5,10 @@
     "data": {
         "id": 1,
         "schema": "com.nordstrom/product/create/1-0-0",
-        "brand": "POLO RALPH LAUREN",
-        "name": "Polo Ralph Lauren 3-Pack Socks",
+        "brand": "SHEIN",
+        "name": "Polo Ralph Lauren 2-Pack Socks",
         "description": "PAGE:/s/polo-ralph-lauren-3-pack-socks/4579874",
-        "category": "Socks for Men",
+        "category": "Socks for Women",
         "photographers": [
             "1"
         ],

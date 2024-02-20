@@ -1,12 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://node4.netes1.cs799-serverless-pg0.utah.cloudlab.us:31112
+  gateway: http://127.0.0.1:8080
 functions:
   product-photos-master:
     lang: node10-express
     handler: ./master
-    image: dsirone/product-photos-master:latest
+    image: innocentjr1995/product-photos-master:latest
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable
