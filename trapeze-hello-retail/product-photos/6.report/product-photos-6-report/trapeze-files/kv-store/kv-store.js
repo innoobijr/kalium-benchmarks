@@ -7,7 +7,7 @@ class KV_Store {
             host: h,
             user: u,
             password: pwd,
-            database: "unsecurekv"
+            database: "helloRetail"
         }));
         if (tbl && typeof tbl === 'string') {
             this.table = tbl;

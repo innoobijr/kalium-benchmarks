@@ -115,7 +115,7 @@ const impl = {
     const kv = new KV_Store(constants.HOST, constants.USER, 
         constants.PASS, constants.DBNAME, constants.TABLE_PHOTO_ASSIGNMENTS_NAME);
     kv.init()
-      .then(() => kv.del(event.body.photographer.id))
+      //.then(() => kv.del(event.body.photographer.id))
       .then(() => kv.close())
       .then(() => callback())
       .catch(err => callback(err))
@@ -153,14 +153,17 @@ const impl = {
 
         impl.succeedAssignment(event, (sErr) => {
           if (sErr && !(sErr.code && sErr.code === 'ConditionalCheckFailedException')) { // if we fail due to the conditional check, we should proceed regardless to remain idempotent
+	    console.log("weird error 1");
             callback(`${constants.MODULE} ${constants.METHOD_SUCCEED_ASSIGNMENT} - ${sErr.stack}`)
           } else {
             impl.deleteAssignment(event, (dErr) => {
               if (dErr) {
+		      console.log("weird error 2");
                 callback(`${constants.MODULE} ${constants.METHOD_DELETE_ASSIGNMENT} - ${dErr.stack}`)
               } else {
                 const result = event;
                 result.body.outcome = 'photo taken';
+		console.log("Normal return");
                 callback(null, result.body)
               }
             })

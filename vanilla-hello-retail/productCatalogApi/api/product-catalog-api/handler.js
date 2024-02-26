@@ -19,7 +19,7 @@ const categoryItemsSchemaId = makeSchemaId(categoryItemsSchema);
 const productsRequestSchemaId = makeSchemaId(productsRequestSchema);
 const productItemsSchemaId = makeSchemaId(productItemsSchema);
 
-const ajv = new AJV();
+const ajv = new AJV.default({ strict: false });
 ajv.addSchema(categoryRequestSchema, categoryRequestSchemaId);
 ajv.addSchema(categoryItemsSchema, categoryItemsSchemaId);
 ajv.addSchema(productsRequestSchema, productsRequestSchemaId);

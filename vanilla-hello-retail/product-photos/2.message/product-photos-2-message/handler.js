@@ -53,10 +53,10 @@ const impl = {
       const transporter = nodemailer.createTransport({
         host: 'smtp.ethereal.email',
         port: 587,
-        secure: false, // true for 465, false for other ports
+        //secure: false, // true for 465, false for other ports
         auth: {
-          user: 'joesph88@ethereal.email',
-          pass: 'QUgxRnA3X9zuDGGdX3',
+          user: 'jack.bergnaum@ethereal.email',
+          pass: 'dbXcfSXNeTkUDcc129',
         },
       });
       return Promise.resolve(transporter);

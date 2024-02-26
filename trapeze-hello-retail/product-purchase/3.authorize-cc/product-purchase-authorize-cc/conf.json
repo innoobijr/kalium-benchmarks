@@ -28,7 +28,7 @@
     "owner" : ["top"],
     "ccCompany" : ["top"]
   },
-  "host": "mysql.default.svc.cluster.local",
+  "host": "mysql.openfaas-fn.svc.cluster.local",
   "user": "abc",
   "pass": "xyz"
 }

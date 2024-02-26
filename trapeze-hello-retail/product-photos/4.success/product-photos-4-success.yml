@@ -1,14 +1,15 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://192.168.99.101:31112
+  gateway: http://node4.netes2.cs799-serverless-pg0.wisc.cloudlab.us:31112
 functions:
   trapeze-product-photos-4-success:
     lang: node10-express
     handler: ./product-photos-4-success
-    image: prabkumar/trapeze-product-photos-4-success:latest
+    image: dsirone/trapeze-product-photos-4-success:latest
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable
     write_debug: true
-    
+    annotations:
+      com.openfaas.profile: test

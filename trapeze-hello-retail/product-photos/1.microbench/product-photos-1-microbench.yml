@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://node4.netes2.cs799-serverless-pg0.wisc.cloudlab.us:31112
+functions:
+  trapeze-product-photos-1-microbench:
+    lang: node10-express
+    handler: ./product-photos-1-microbench
+    image: dsirone/trapeze-product-photos-1-microbench:latest
+    read_timeout: 500 # seconds
+    write_timeout: 500 # seconds
+    exec_timeout: 0s # disable
+    write_debug: true
+    annotations:
+      com.openfaas.profile: test

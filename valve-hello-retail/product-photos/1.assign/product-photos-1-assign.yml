@@ -1,12 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://192.168.99.101:31112
+  gateway: http://node4.netes2.cs799-serverless-pg0.wisc.cloudlab.us:31112
 functions:
   valve-product-photos-1-assign:
     lang: node10-express
     handler: ./product-photos-1-assign
-    image: prabkumar/valve-product-photos-1-assign:latest
+    image: dsirone/valve-product-photos-1-assign:latest
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable
@@ -14,6 +14,8 @@ functions:
     environment:
       DBNAME: 'helloRetail'
       TABLE_PHOTO_REGISTRATIONS_NAME: 'photoRegistrationTable'
-      HOST: 'mysql.default.svc.cluster.local'
+      HOST: 'mysql.openfaas-fn.svc.cluster.local'
       USER: 'abc'
       PASS: 'xyz'
+    annotations:
+      com.openfaas.profile: test

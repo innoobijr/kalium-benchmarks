@@ -15,9 +15,7 @@
     "bluebird": "3.5.5",
     "ajv": "latest",
     "url": "0.11.0",
-    "got": "latest",
+    "got": "6.7.1",
     "lambda-shim": "file:./trapeze-files/lambda-shim"
-
-    
   }
 }

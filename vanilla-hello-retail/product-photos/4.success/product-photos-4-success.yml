@@ -11,4 +11,6 @@ functions:
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable
     write_debug: true
+    annotations:
+      com.openfaas.profile: test
     

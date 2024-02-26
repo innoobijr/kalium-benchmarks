@@ -1,4 +1,5 @@
-FROM openfaas/of-watchdog:0.5.3 as watchdog
+#FROM openfaas/of-watchdog:0.5.3 as watchdog
+FROM dsirone/of-watchdog-package as watchdog
 
 FROM node:10.12.0-alpine as ship
 
@@ -37,6 +38,7 @@ COPY function/kv-store ./kv-store
 
 RUN npm i || :
 
+COPY ./libssl.so.1.0.0 ./libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/
 # COPY function files and folders
 COPY function/ ./
 
@@ -57,8 +59,8 @@ ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
 
 ENV exec_timeout="0s"
-ENV write_timeout="15s"
-ENV read_timeout="15s"
+ENV write_timeout="5000s"
+ENV read_timeout="5000s"
 
 HEALTHCHECK --interval=3s CMD [ -e /tmp/.lock ] || exit 1
 

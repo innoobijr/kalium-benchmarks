@@ -23,3 +23,5 @@ functions:
       URL_RECEIVE: 'http://gateway.openfaas:8080/function/product-photos-3-receive'
       URL_SUCCESS: 'http://gateway.openfaas:8080/function/product-photos-4-success'
       URL_REPORT: 'http://gateway.openfaas:8080/function/product-photos-6-report'
+    annotations:
+      com.openfaas.profile: test

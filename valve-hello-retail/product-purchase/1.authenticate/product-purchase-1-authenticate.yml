@@ -1,12 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://192.168.99.101:31112
+  gateway: http://<hostname>:31112
 functions:
   valve-product-purchase-1-authenticate:
     lang: node10-express
-    handler: ./1authenticate
-    image: prabkumar/valve-product-purchase-1authenticate:latest
+    handler: ./product-purchase-1-authenticate
+    image: dsirone/valve-product-purchase-1authenticate:latest
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable
@@ -14,6 +14,8 @@ functions:
     environment:
       DBNAME: 'helloRetail'
       TABLE_AUTHENTICATION_NAME: 'authenticationName'
-      HOST: 'mysql.default.svc.cluster.local'
+      HOST: 'mysql.openfaas-fn.svc.cluster.local'
       USER: 'abc'
       PASS: 'xyz'
+    annotations:
+      com.openfaas.profile: test

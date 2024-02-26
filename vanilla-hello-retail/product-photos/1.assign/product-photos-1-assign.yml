@@ -17,3 +17,5 @@ functions:
       HOST: 'mysql.openfaas-fn.svc.cluster.local'
       USER: 'abc'
       PASS: 'xyz'
+    annotations:
+      com.openfaas.profile: test

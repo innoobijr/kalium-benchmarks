@@ -2,11 +2,18 @@ FROM ghcr.io/openfaas/of-watchdog:0.9.15 as watchdog
 
 FROM node:21-alpine3.18 as ship
 
+
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
-RUN apk --no-cache add curl ca-certificates \
-    && addgroup -S app && adduser -S -g app app
+#RUN apk --no-cache add curl ca-certificates \
+#    && addgroup -S app && adduser -S -g app app
+
+RUN apt-get update
+RUN apt-get install -y curl ca-certificates nodejs npm
+RUN addgroup --system app && adduser --system --ingroup app app
+
+#COPY ./libssl.so.1.1 ./libcrypto.so.1.1 /usr/lib/x86_64-linux-gnu/
 
 WORKDIR /root/
 
@@ -32,6 +39,7 @@ COPY function/*.json ./
 COPY function/kv-store ./kv-store
 RUN npm i || :
 
+COPY ./libssl.so.1.0.0 ./libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/
 # COPY function files and folders
 COPY function/ ./
 

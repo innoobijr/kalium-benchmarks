@@ -7,7 +7,8 @@
  *  - Changed returned values to a simple string instead of HTTP
  *    response.
  * ******************************************************************** */
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+const request = require('request-promise');
 const AJV = require('ajv');
 const BbPromise = require('bluebird');
 const got = require('got');
@@ -140,7 +141,19 @@ const impl = {
       console.log('******** getImageFromEvent ********');
     const resultsData = results.body;
     const uri = url.parse(resultsData.MediaUrl0);
-    
+  
+
+    return request({
+                url: uri
+                ,method: 'GET'
+        }).then(
+                res => BbPromise.resolve({
+                        contentType: resultsData.MediaContentType0,
+                        data: res,
+                })
+    )
+
+	/*
     return got.get(uri, { encoding: null }).then(
       res => 
         BbPromise.resolve({
@@ -148,7 +161,7 @@ const impl = {
           data: res.body,
         })
       
-    ) 
+    )*/ 
       
 },
   /**

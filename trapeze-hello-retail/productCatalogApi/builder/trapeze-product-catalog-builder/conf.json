@@ -22,7 +22,7 @@
     "ccCompany" : ["top"]
   },
   "securityBound" : "public",
-  "host": "mysql.default.svc.cluster.local",
-  "user": "",
-  "pass": ""
+  "host": "mysql.openfaas-fn.svc.cluster.local",
+  "user": "abc",
+  "pass": "xyz"
 }
