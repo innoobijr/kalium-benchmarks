@@ -1,12 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://192.168.99.101:31112
+  gateway: http://127.0.0.1:8080
 functions:
   valve-product-catalog-api:
     lang: node10-express
     handler: ./trapeze-product-catalog-api
-    image: dsirone/valve-trapeze-product-catalog-api:latest
+    image: innocentjr1995/valve-trapeze-product-catalog-api:latest
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable

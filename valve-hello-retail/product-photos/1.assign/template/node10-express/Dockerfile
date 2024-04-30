@@ -1,6 +1,8 @@
 #FROM node:8.10.0-alpine as ship
 FROM ubuntu:18.04 as ship
 
+
+
 ############# ADDED 1 #######################
 COPY of-watchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog

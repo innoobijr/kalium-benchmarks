@@ -1,5 +1,6 @@
-FROM node:10.12.0-alpine as ship
+#FROM ghcr.io/openfaas/of-watchdog:0.9.15 as watchdog
 
+FROM node:21-alpine3.18 as ship
 ############# ADDED 1 #######################
 COPY of-watchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog

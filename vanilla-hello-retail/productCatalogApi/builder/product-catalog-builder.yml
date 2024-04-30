@@ -1,12 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://<hostname>:31112
+  gateway: http://127.0.0.1:8080
 functions:
   product-catalog-builder:
     lang: node10-express
     handler: ./product-catalog-builder
-    image: dsirone/product-catalog-builder:latest
+    image: innocentjr1995/product-catalog-builder
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable

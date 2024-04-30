@@ -1,12 +1,13 @@
-FROM ghcr.io/openfaas/of-watchdog:0.9.15 as watchdog
+FROM openfaas/of-watchdog:0.5.3 as watchdog
 
-FROM node:21-alpine3.18 as ship
+FROM node:10.12.0-alpine as ship
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
 
-RUN apk --no-cache add curl ca-certificates \
-    && addgroup -S app && adduser -S -g app app
+RUN addgroup -S app && adduser -S -g app app
+
+RUN apk --no-cache add ca-certificates
 
 WORKDIR /root/
 
@@ -22,7 +23,6 @@ COPY package.json ./
 # This ordering means the npm installation is cached for the outer function handler.
 RUN npm i
 
-# RUN cd function/kv-store && npm i
 # Copy outer function handler
 COPY index.js ./
 
@@ -30,10 +30,6 @@ COPY index.js ./
 # entry allows caching of npm install
 WORKDIR /home/app/function
 COPY function/*.json ./
-COPY function/kv-store ./kv-store
-
-RUN ls && pwd && cat package.json
-
 RUN npm i || :
 
 # COPY function files and folders
@@ -48,14 +44,12 @@ RUN chown app:app -R /home/app \
 
 USER app
 
-EXPOSE 3306
-
 ENV cgi_headers="true"
 ENV fprocess="node index.js"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
 
-ENV exec_timeout="0s"
+ENV exec_timeout="10s"
 ENV write_timeout="15s"
 ENV read_timeout="15s"
 

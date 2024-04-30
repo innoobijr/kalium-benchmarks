@@ -1,0 +1,56 @@
+Averages of bench files:
+
+Directory: vanilla-hello-retail
+File: vanilla-hello-retail/product-photos/1.assign/bench_20_assign - Average: 0.056328
+File: vanilla-hello-retail/product-photos/1.assign/bench_20_record - Not found
+File: vanilla-hello-retail/product-photos/1.assign/bench_20_receive - Not found
+File: vanilla-hello-retail/product-photos/1.assign/bench_20_success - Not found
+File: vanilla-hello-retail/product-photos/1.assign/bench_20_report - Not found
+File: vanilla-hello-retail/product-photos/2.record/bench_20_assign - Not found
+File: vanilla-hello-retail/product-photos/2.record/bench_20_record - Average: 0.077248
+File: vanilla-hello-retail/product-photos/2.record/bench_20_receive - Not found
+File: vanilla-hello-retail/product-photos/2.record/bench_20_success - Not found
+File: vanilla-hello-retail/product-photos/2.record/bench_20_report - Not found
+File: vanilla-hello-retail/product-photos/3.receive/bench_20_assign - Not found
+File: vanilla-hello-retail/product-photos/3.receive/bench_20_record - Not found
+File: vanilla-hello-retail/product-photos/3.receive/bench_20_receive - Average: 0.123430
+File: vanilla-hello-retail/product-photos/3.receive/bench_20_success - Not found
+File: vanilla-hello-retail/product-photos/3.receive/bench_20_report - Not found
+File: vanilla-hello-retail/product-photos/4.success/bench_20_assign - Not found
+File: vanilla-hello-retail/product-photos/4.success/bench_20_record - Not found
+File: vanilla-hello-retail/product-photos/4.success/bench_20_receive - Not found
+File: vanilla-hello-retail/product-photos/4.success/bench_20_success - Average: 0.025667
+File: vanilla-hello-retail/product-photos/4.success/bench_20_report - Not found
+File: vanilla-hello-retail/product-photos/6.report/bench_20_assign - Not found
+File: vanilla-hello-retail/product-photos/6.report/bench_20_record - Not found
+File: vanilla-hello-retail/product-photos/6.report/bench_20_receive - Not found
+File: vanilla-hello-retail/product-photos/6.report/bench_20_success - Not found
+File: vanilla-hello-retail/product-photos/6.report/bench_20_report - Average: 0.093916
+
+Directory: valve-hello-retail
+File: valve-hello-retail/product-photos/1.assign/bench_20_assign - Average: 0.013697
+File: valve-hello-retail/product-photos/1.assign/bench_20_record - Not found
+File: valve-hello-retail/product-photos/1.assign/bench_20_receive - Not found
+File: valve-hello-retail/product-photos/1.assign/bench_20_success - Not found
+File: valve-hello-retail/product-photos/1.assign/bench_20_report - Not found
+File: valve-hello-retail/product-photos/2.record/bench_20_assign - Not found
+File: valve-hello-retail/product-photos/2.record/bench_20_record - Average: 0.014857
+File: valve-hello-retail/product-photos/2.record/bench_20_receive - Not found
+File: valve-hello-retail/product-photos/2.record/bench_20_success - Not found
+File: valve-hello-retail/product-photos/2.record/bench_20_report - Not found
+File: valve-hello-retail/product-photos/3.receive/bench_20_assign - Not found
+File: valve-hello-retail/product-photos/3.receive/bench_20_record - Not found
+File: valve-hello-retail/product-photos/3.receive/bench_20_receive - Average: 0.016480
+File: valve-hello-retail/product-photos/3.receive/bench_20_success - Not found
+File: valve-hello-retail/product-photos/3.receive/bench_20_report - Not found
+File: valve-hello-retail/product-photos/4.success/bench_20_assign - Not found
+File: valve-hello-retail/product-photos/4.success/bench_20_record - Not found
+File: valve-hello-retail/product-photos/4.success/bench_20_receive - Not found
+File: valve-hello-retail/product-photos/4.success/bench_20_success - Average: 0.006200
+File: valve-hello-retail/product-photos/4.success/bench_20_report - Not found
+File: valve-hello-retail/product-photos/6.report/bench_20_assign - Not found
+File: valve-hello-retail/product-photos/6.report/bench_20_record - Not found
+File: valve-hello-retail/product-photos/6.report/bench_20_receive - Not found
+File: valve-hello-retail/product-photos/6.report/bench_20_success - Not found
+File: valve-hello-retail/product-photos/6.report/bench_20_report - Average: 0.014237
+
