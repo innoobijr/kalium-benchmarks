@@ -1,0 +1,259 @@
+\usepackage{epsfig,endnotes}
+\usepackage{etex}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{framed,multicol}
+\usetikzlibrary{shapes,arrows,fit,calc,positioning}
+% \usepackage{cite}
+\usepackage{pgfplots}
+\usetikzlibrary{matrix}
+\usepgfplotslibrary{groupplots}
+\usepackage{pgfplotstable}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{mdframed}
+\usepackage[compact]{titlesec}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{diagbox}
+%\usepackage{authblk}
+% \usepackage{algpseudocode}
+\usepackage{algorithmic}
+\usepackage{xspace}
+%\usepackage{subcaption}
+\usepackage{array,graphicx}
+\usepackage{booktabs}
+\usepackage{pifont}
+\usepackage{balance}
+% \usepackage{amssymb}
+% \usepackage{float}
+% \usepackage[cmex10]{amsmath}
+% \usepackage{mathtools}
+
+\usepackage[export]{adjustbox}
+\usepackage{paralist}
+\usepackage{boxedminipage} % for the bag-of-words figure.
+\usepackage{color}
+% \usepackage[hyphens]{url}
+% \usepackage[breaklinks=true]{hyperref}
+% \hypersetup{colorlinks=true, breaklinks=true}
+\usepackage{outline}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{footnote}     % footnotes, duh
+%\restylefloat{table}      % "
+\usepackage{wrapfig}      % wraps figure
+%\usepackage{enumitem}
+\usepackage[]{caption}
+\usepackage{subfig}
+\usepackage{siunitx}
+% \usepackage{subcaption}
+% \captionsetup{compatibility=false}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\hyphenpenalty=5000
+\tolerance=10000
+\clubpenalty=10000 
+\widowpenalty = 10000
+
+\usepgfplotslibrary{external} % LATEX and plain TEX
+\usepgfplotslibrary[external] % ConTEXt
+\usetikzlibrary{pgfplots.external} % LATEX and plain TEX
+\usetikzlibrary[pgfplots.external] % ConTEXt
+
+
+\ifnum\showcomments=1
+    \newcommand{\fixme}[1]{{\textcolor{red}{[\textbf{FIXME}: #1]}}}
+    \newcommand{\checkme}[1]{{\textcolor{orange}{[CHECKME: #1]}}}
+    \newcommand{\liangw}[1]{{\textcolor{red}{[LW: #1]}}}
+    \newcommand{\deepaks}[1]{{\textcolor{purple}{[DS: #1]}}}
+    \newcommand{\draft}[1]{{\textcolor{darkgray}{[Draft: #1]}}}
+    \newcommand{\tnote}[1]{{\textcolor{blue}{[TomR: #1]}}}
+    \newcommand{\mnote}[1]{{\textcolor{cyan}{[Mike: #1]}}}
+
+    \newcounter{mynote}[section]
+    \newcommand{\notecolor}{blue}
+    \newcommand{\thenote}{\thesection.\arabic{mynote}}
+    \newcommand{\dsadded}[1]{{\textcolor{magenta}{[DS Added: #1]}}}
+\else
+    \newcommand{\fixme}[1]{}
+    \newcommand{\checkme}[1]{}
+    \newcommand{\thenote}[1]{}
+    \newcommand{\liangw}[1]{}
+    \newcommand{\deepaks}[1]{}
+    \newcommand{\draft}[1]{}
+    \newcommand{\tnote}[1]{}
+    \newcommand{\mnote}[1]{}
+    \newcommand{\znote}[1]{}
+    \newcommand{\dsadded}[1]{{#1}}
+    \newcommand{\revisit}[1]{{#1}}
+
+\fi
+
+
+\newcommand{\tabref}[1]{{Table~\ref{#1}}}
+\newcommand{\figref}[1]{{Figure~\ref{#1}}}
+\newcommand{\algref}[1]{{Algorithm~\ref{#1}}}
+\newcommand{\secref}[1]{{\S\ref{#1}}}
+\newcommand{\apref}[1]{{Appendix~\ref{#1}}}
+\newcommand{\bheading}[1]{{\vspace{4pt}\noindent\textbf{#1}}}
+\newcommand{\paraheading}[1]{{\vspace{4pt}\noindent\textit{#1}}}
+% Make figures and tables same counter
+\makeatletter
+\renewcommand*{\thetable}{\arabic{table}}
+\renewcommand*{\thefigure}{\arabic{figure}}
+\let\c@table\c@figure
+\makeatother 
+
+\newlength{\saveparindent}
+\setlength{\saveparindent}{\parindent}
+\newlength{\saveparskip}
+\setlength{\saveparskip}{\parskip}
+
+\newcounter{ctr}
+\newcounter{savectr}
+\newcounter{ectr}
+
+\newenvironment{newitemize}{%
+\begin{list}{\mbox{}\hspace{2pt}$\bullet$\hfill}{\labelwidth=10pt%
+\labelsep=3pt \leftmargin=15pt \topsep=2pt%
+\setlength{\listparindent}{\saveparindent}%
+\setlength{\parsep}{\saveparskip}%
+\setlength{\itemsep}{2pt} }}{\end{list}}
+
+
+\newenvironment{newenum}{%
+\begin{list}{{\rm (\arabic{ctr})}\hfill}{\usecounter{ctr} \labelwidth=17pt%
+\labelsep=5pt \leftmargin=22pt \topsep=3pt%
+\setlength{\listparindent}{\saveparindent}%
+\setlength{\parsep}{\saveparskip}%
+\setlength{\itemsep}{2pt} }}{\end{list}}
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+  
+\newcommand{\method}[1]{\verb !#1!}
+\newenvironment{grammarblock}
+{ \vspace{-0.5em} \begin{quote} \footnotesize 
+        \setlength{\leftskip}{-1em}}
+{ \end{quote} \vspace{-0.5em} }
+\newcommand{\grammarinline}[1]{{\footnotesize \tt #1}}
+
+\newcommand{\grammarsym}[1]{$\langle${\em #1}$\rangle$}
+
+\newlength\figureheight
+\setlength\figureheight{3.5in} 
+
+\newlength\figurewidth
+\setlength\figurewidth{2.0in}
+
+\newlength{\arrow}
+\settowidth{\arrow}{\scriptsize$2000$}
+
+\newlength{\arrowl}
+\settowidth{\arrowl}{\scriptsize$8000$}
+\newcommand*{\myrightarrowl}[1]{\xrightarrow{\mathmakebox[\arrowl]{#1}}}
+
+\newcommand*{\myrightarrow}[1]{\xrightarrow{\mathmakebox[\arrow]{#1}}}
+\newcommand*{\myleftarrow}[1]{\xleftarrow{\mathmakebox[\arrow]{#1}}}
+\newcommand*{\myleftrightarrow}[1]{\xleftrightarrow{\mathmakebox[\arrow]{#1}}}
+
+\newcommand*{\mydashrightarrow}[1]{\dashrightarrow{\mathmakebox[\arrow]{#1}}}
+\newcommand*{\mydashleftarrow}[1]{\xdashleftarrow{\mathmakebox[\arrow]{#1}}}
+
+\makeatletter
+\newcommand{\mydashleftrightarrow}[2][]{\ext@arrow 3359\leftrightarrowfill@@{#1}{#2}}
+\def\rightarrowfill@@{\arrowfill@@\relax\relbar\rightarrow}
+\def\leftarrowfill@@{\arrowfill@@\leftarrow\relbar\relax}
+\def\leftrightarrowfill@@{\arrowfill@@\leftarrow\relbar\rightarrow}
+\def\arrowfill@@#1#2#3#4{%
+  $\m@th\thickmuskip0mu\medmuskip\thickmuskip\thinmuskip\thickmuskip
+   \relax#4#1
+   \xleaders\hbox{$#4#2$}\hfill
+   #3$%
+}
+\makeatother
+
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+\newcommand{\sysname}{Kalium\xspace}
+\newcommand{\runsec}{\textsf{runsec}\xspace}
+\newcommand{\helloapp}{\textsf{HelloRetail}\xspace}
+\newcommand{\codeapp}{\textsf{CodePipeline}\xspace}
+\newcommand{\mapapp}{\textsf{MapReduce}\xspace}
+\newcommand{\awsapp}{\textsf{AWS-Text}\xspace}
+\newcommand{\smsapp}{\textsf{SMSBot}\xspace}
+\newcommand{\twilioapp}{\textsf{TwilioTransc}\xspace}
+\newcommand{\weatherapp}{\textsf{Weather}\xspace}
+\newcommand{\flow}[2]{{$#1$}$\rightarrow${$#2$}}
+\newcommand{\noflow}[2]{{$#1$}$\nrightarrow${$#2$}}
+\newcommand{\hbefore}[2]{{#1}$\Rightarrow${#2}}
+\newcommand{\fl}[1]{$\textsf{fl}_{#1}$}
+\newcommand{\flalt}[2]{$\textsf{fl}_{#1\rightarrow{#2}}$}
+
+% \newcommand{\iotask}{\emph{IOTask}\xspace}
+% \newcommand{\nettask}{\emph{NetTask}\xspace}
+% \newcommand{\cputask}{\emph{CPUTask}\xspace}
+% \newcommand{\colevel}{\textsf{colevel}\xspace}
+% \newcommand{\reqfreq}{\textsf{reqfreq}\xspace}
+% \newcommand{\memsize}{\textsf{memsize}\xspace}
+\newcommand{\aws}{AWS\xspace}
+\newcommand{\google}{Google\xspace}
+\newcommand{\azure}{Azure\xspace}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, exports, new, true, req, send, status, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinelanguage{Python}{
+  keywords={def, replace, str, encrypt, get_token, send_action},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  tabsize=4,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+
+
+\lstset
+{ %Formatting for code in appendix
+    language=Python,
+    basicstyle=\footnotesize,
+    numbers=none,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=2,
+    literate={\ \ }{{\ }}1,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+% \setlength{\intextsep}{1pt plus 2pt minus 2pt}

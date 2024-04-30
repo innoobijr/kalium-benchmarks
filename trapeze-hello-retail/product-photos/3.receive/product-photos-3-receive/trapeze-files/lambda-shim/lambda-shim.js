@@ -164,9 +164,10 @@ module.exports.makeShim = function ( allowExtReq) {
                                     conf.declassifiers.callback &&
                                     labelOrdering.lte(label, conf.declassifiers.callback.maxLabel) &&
                                     labelOrdering.lte(conf.declassifiers.callback.minLabel, callbackSecurityBound)) {
-
+			            console.log("[Callback] HERE #1")
                                     return callback(eval(conf.declassifiers.callback.errCode)(err), eval(conf.declassifiers.callback.valueCode)(value));
                                 } else {
+					console.log("[Callback] HERE #2")
                                     return callback(err, value);
                                 }
                             } else {
@@ -174,13 +175,16 @@ module.exports.makeShim = function ( allowExtReq) {
                                     conf.declassifiers.callback &&
                                     labelOrdering.lte(label, conf.declassifiers.callback.maxLabel) &&
                                     labelOrdering.lte(conf.declassifiers.callback.minLabel, callbackSecurityBound)) {
-
+				    console.log("[Callback] HERE #3")
                                     return callback(eval(conf.declassifiers.callback.errCode)(err),eval(conf.declassifiers.callback.valueCode)(value));
 
                                 } else {
                                     if (labelOrdering.lte(label, callbackSecurityBound)) {
+					    console.log("[Callback] HERE #4")
                                         return callback(err, value);
                                     } else {
+					    console.log("[Callback] HERE #5")
+					    console.log(value)
                                         return callback(null, value);
                                     }
                                 }

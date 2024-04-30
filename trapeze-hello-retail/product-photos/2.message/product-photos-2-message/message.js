@@ -55,8 +55,8 @@ const impl = {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-          user: 'vqx6tnt2bar5fhcu@ethereal.email',
-          pass: 'PsFzkYR7nXpcJZEF7s',
+          user: 'jack.bergnaum@ethereal.email',
+          pass: 'dbXcfSXNeTkUDcc129',
         },
       });
       return Promise.resolve(transporter);
@@ -102,7 +102,7 @@ module.exports = (event, context, callback) => {
       .then(impl.sendMessage)
       .then((messageInfo) => {
         console.log(`Success: ${JSON.stringify(messageInfo, null, 2)}`);
-        callback(null, event)
+        callback(null, event.body)
       })
       .catch((ex) => {
         console.log(JSON.stringify(ex, null, 2));

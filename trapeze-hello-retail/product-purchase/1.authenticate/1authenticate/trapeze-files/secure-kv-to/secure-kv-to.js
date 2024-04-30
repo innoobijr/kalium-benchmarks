@@ -7,7 +7,7 @@ class SecureKV_TO {
             host: h,
             user: u,
             password: pwd,
-            database: "securekvto"
+            database: "helloRetail"
         }));
         if (tbl && typeof tbl === 'string') {
             this.table = tbl;
@@ -79,18 +79,19 @@ SHOW TABLES like ?;
     }
 
     put (k, v, l) {
+        l=0;
         const sql = `
-INSERT INTO ${this.table} (rowkey,rowvalues,label) 
-    VALUES (?, ?, ?)
+INSERT INTO ${this.table} (rowkey,rowvalues) 
+    VALUES (?, ?)
     ON DUPLICATE KEY UPDATE 
-        rowvalues=VALUES(rowvalues), label=VALUES(label);
+        rowvalues=VALUES(rowvalues);
         `;
 
         console.log("** DEBUG: Secure K-V (TO) - Call to put.");
-        // console.log("** DEBUG: Secure K-V (TO) -   Key:   " + k + ".");
-        // console.log("** DEBUG: Secure K-V (TO) -   Value: " + v + ".");
+        //console.log("** DEBUG: Secure K-V (TO) -   Key:   " + k + ".");
+        //console.log("** DEBUG: Secure K-V (TO) -   Value: " + v + ".");
 
-        return this.con.queryAsync(sql,[k,v,l])
+        /*return this.con.queryAsync(sql,[k,v,l])
             .then((result) => {
                 console.log("** DEBUG: Secure K-V (TO) - Query successful - inserting values.");
                 console.log("** DEBUG: Secure K-V (TO) - Query result:");
@@ -99,6 +100,19 @@ INSERT INTO ${this.table} (rowkey,rowvalues,label)
             })
             .catch((err) => {
                 console.log("** DEBUG: Secure K-V (TO) - Query failed - inserting values.");
+		console.log(err)
+                return bbPromise.reject(err);
+            });*/
+	 return this.con.beginTransactionAsync()
+            .then(() => console.log("** DEBUG: Successfully started transaction."))
+            .then(() => this.con.queryAsync(`DELETE FROM ${this.table} WHERE rowkey = ?`, [k]))
+            .then(() => console.log("** DEBUG: Delete successful."))
+            .then(() => this.con.queryAsync(`INSERT INTO ${this.table} (rowkey,rowvalues) VALUES (?, ?)`, [k,v]))
+            .then(() => console.log("** DEBUG: Insert successful."))
+            .then(() => this.con.commitAsync())
+            .then(() => console.log("** DEBUG: Transaction committed successfully."))
+            .catch((err) => {
+                console.log("** DEBUG: Failed putting value.");
                 return bbPromise.reject(err);
             });
     }
@@ -108,17 +122,15 @@ INSERT INTO ${this.table} (rowkey,rowvalues,label)
 SELECT rowvalues 
 FROM ${this.table} 
 WHERE rowkey = ? 
-    
         `;
-//  AND label <= ?;
+
         console.log("** DEBUG: Secure K-V (TO) - Call to get.");
         console.log("** DEBUG: Secure K-V (TO) -   Key:   " + k + ".");
-        console.log(l);
         return this.con.queryAsync(sql, [k,l])
             .then((result) => {
                 console.log("** DEBUG: Secure K-V (TO) - Query successful - getting values.");
-                console.log("** DEBUG: Secure K-V (TO) - Query result:");
-                console.log(result);
+                // console.log("** DEBUG: Secure K-V (TO) - Query result:");
+                // console.log(result);
                 // console.log("** DEBUG: Secure K-V (TO) - Query result />");
 
                 if (result.length === 0) return "";
@@ -157,7 +169,7 @@ WHERE rowkey = ? AND
         const sql = `
 SELECT rowkey 
 FROM ${this.table} 
-WHERE label <= ?;
+
         `;
 
         console.log("** DEBUG: Secure K-V (TO) - Call to keys.");
@@ -180,7 +192,7 @@ WHERE label <= ?;
         const sql = `
 SELECT rowkey, rowvalues 
 FROM ${this.table} 
-WHERE label <= ?;
+
         `;
 
         console.log("** DEBUG: Secure K-V (TO) - Call to entries.");
@@ -189,7 +201,7 @@ WHERE label <= ?;
             .then((result) => {
                 console.log("** DEBUG: Secure K-V (TO) - Query successful - getting entries.");
                 // console.log("** DEBUG: Secure K-V (TO) - Query result:");
-                console.log(result);
+                // console.log(result);
                 console.log("** DEBUG: Secure K-V (TO) - Query result />");
                 
                 return result.map((row) => ({

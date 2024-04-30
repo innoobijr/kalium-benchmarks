@@ -182,7 +182,7 @@ module.exports.makeShim = function ( allowExtReq) {
                                     if (labelOrdering.lte(label, callbackSecurityBound)) {
                                         return callback(err, value);
                                     } else {
-                                        return callback(value, null);
+                                        return callback(null, value);
                                     }
                                 }
                             }

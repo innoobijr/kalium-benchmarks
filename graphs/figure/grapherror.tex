@@ -1,0 +1,76 @@
+%\tikzsetnextfilename{curve_norm.eps}
+\definecolor{color1}{rgb}{0.98, 0.81, 0.69}
+\definecolor{color2}{rgb}{0.55, 0.71, 0.0}
+\definecolor{color3}{rgb}{1.0, 0.6, 0.4}
+\definecolor{color4}{HTML}{2B83BA}
+
+\definecolor{bblue}{HTML}{4F81BD}
+\definecolor{rred}{HTML}{D7191C}
+
+\pgfplotsset{
+compat=1.11,
+legend image code/.code={
+\draw[mark repeat=2,mark phase=2]
+plot coordinates {
+(0cm,0cm)
+(0.15cm,0cm)        %% default is (0.3cm,0cm)
+(0.2cm,0cm)         %% default is (0.6cm,0cm)
+};%
+}
+}
+
+
+\begin{tikzpicture}
+\begin{axis}
+[
+% ticklabel style = {font=\small},
+% xlabel style = {font=\small},
+% ylabel style = {font=\small},
+legend style = {font=\small},
+y tick label style={
+        /pgf/number format/.cd,
+            fixed,
+            fixed zerofill,
+            precision=0,
+        /tikz/.cd
+    },
+%%%basic
+% width = 5cm, 
+% height = 4cm,
+width = 0.8\columnwidth, 
+height = .6\columnwidth,
+ylabel = False-postive rate (\%),
+xlabel = No. of rounds of traces for modeling,
+xlabel style={name=xlabel, yshift=0.5em},
+ylabel style={name=ylabel, yshift=-0.5em},
+%%%set up grid
+% ytick={0,0.2,...,1.5},
+grid = major,
+grid style={dashed, gray!30},
+% legend pos=south east,
+% legend style={at={(0.5,1.35)}, anchor=north, legend columns=2},
+%%%bottom, outside 
+% legend style={ anchor=north},
+%legend style={at={(xlabel.north)},yshift=-1ex, anchor=north, legend cell align=left}, 
+% colorbrewer cycle list=Spectral,
+cycle list name=exotic,
+]
+
+\addplot+[mark=none, line width=1pt, dotted] 
+  table[x=no, y expr = \thisrow{hello} / 1000.0 * 100, col sep=comma] {figure/data/graph_error_conv.csv};
+  \addplot+[mark=none,  line width=1pt, densely dotted] 
+  table[x=no, y expr = \thisrow{code} / 1000.0 * 100, col sep=comma] {figure/data/graph_error_conv.csv};
+  \addplot+[mark=none,  line width=1pt, dashed] 
+  table[x=no, y expr = \thisrow{map} / 1000.0 * 100, col sep=comma] {figure/data/graph_error_conv.csv};
+  \addplot+[mark=none,  line width=1pt, densely dotted] 
+  table[x=no, y expr = \thisrow{aws-text} / 1000.0 * 100, col sep=comma] {figure/data/graph_error_conv.csv};
+  \addplot+[mark=none,  line width=1pt, dashed] 
+  table[x=no, y expr = \thisrow{smsbot} / 1000.0 * 100, col sep=comma] {figure/data/graph_error_conv.csv};
+  \addplot+[mark=none,  line width=1pt, dashed] 
+  table[x=no, y expr = \thisrow{twilio} / 1000.0 * 100, col sep=comma] {figure/data/graph_error_conv.csv};
+  \addplot+[mark=none,  line width=1pt, dashed] 
+  table[x=no, y expr = \thisrow{weather} / 1000.0 * 100, col sep=comma] {figure/data/graph_error_conv.csv};
+% \legend{Python-1024, Python-2048, Nodejs-1024, Nodejs-2048}
+\legend{\helloapp, \codeapp, \mapapp, \awsapp, \smsapp, \twilioapp, \weatherapp}
+\end{axis}
+\end{tikzpicture}

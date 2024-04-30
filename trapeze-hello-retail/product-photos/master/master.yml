@@ -1,0 +1,27 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://node4.netes2.cs799-serverless-pg0.wisc.cloudlab.us:31112
+functions:
+  trapeze-product-photos-master:
+    lang: node10-express
+    handler: ./product-photos-master
+    image: dsirone/trapeze-product-photos-master:latest
+    read_timeout: 500 # seconds
+    write_timeout: 500 # seconds
+    exec_timeout: 0s # disable
+    write_debug: true
+    environment:
+      DBNAME: 'helloRetail'
+      TABLE_CREDIT_CARDS_NAME: 'creditCardsName'
+      HOST: 'mysql.openfaas-fn.svc.cluster.local'
+      USER: 'abc'
+      PASS: 'xyz'
+      URL_ASSIGN: 'http://gateway.openfaas:8080/function/trapeze-product-photos-1-assign' 
+      URL_MESSAGE: 'http://gateway.openfaas:8080/function/trapeze-product-photos-2-message'
+      URL_RECORD: 'http://gateway.openfaas:8080/function/trapeze-product-photos-2-record'
+      URL_RECEIVE: 'http://gateway.openfaas:8080/function/trapeze-product-photos-3-receive'
+      URL_SUCCESS: 'http://gateway.openfaas:8080/function/trapeze-product-photos-4-success'
+      URL_REPORT: 'http://gateway.openfaas:8080/function/trapezep-product-photos-6-report'
+    annotations:
+      com.openfaas.profile: test

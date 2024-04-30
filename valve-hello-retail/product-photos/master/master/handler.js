@@ -1,6 +1,9 @@
 "use strict"
 
-const request = require('request-promise')
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+const request = require('request-promise');
+const https = require('https');
+const got = require('got');
 
 const constants = { 
 
@@ -88,7 +91,39 @@ const api = {
 
 module.exports = (event, context, callback) => {
     console.log('abcd')
-   if (event.path == '/request') {
+    // Testing HTTPs proxying
+    //request('https://node0.controller.cs799-serverless-pg0.wisc.cloudlab.us:4443/', function (error, response, body) {
+  	//if (!error && response.statusCode == 200) {
+    //		console.log(body);
+  //	}
+    //});
+	/*var agentOptions;
+	var agent;
+
+	agentOptions = {
+		host: 'node0.controller.cs799-serverless-pg0.wisc.cloudlab.us'
+		, port: '4443'
+		, path: '/'
+		, rejectUnauthorized: false
+	};
+
+	agent = new https.Agent(agentOptions);
+
+	request({
+  		url: "https://node0.controller.cs799-serverless-pg0.wisc.cloudlab.us:4443/"
+		, method: 'GET'
+		, agent: agent
+	}, function (err, resp, body) {
+  		console.log(body)
+	});
+
+    //const got = require('got');
+    got.get("https://node0.controller.cs799-serverless-pg0.wisc.cloudlab.us:4443/", { encoding: 'utf-8' }).then(
+      res =>
+	    console.log(res.body)
+    )*/
+
+    if (event.path == '/request') {
       api.receiveRequest (event, context, callback);
     } else if (event.path == '/photos') {
       api.receivePhoto (event, context, callback);

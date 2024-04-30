@@ -1,0 +1,35 @@
+\documentclass{article}[IEEE]
+\usepackage{graphicx} % Required for inserting images
+
+\title{Kalium Artifact Figures}
+
+\def\showcomments{0}
+\input{defs}
+
+
+%\author{deepaksirone94 }
+%\date{June 2023}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{figure}[t]
+\begin{center}
+\input{figure/grapherror.tex}
+\end{center}
+\caption{False-positive rates when using the traces collected from different numbers of rounds  
+for building flow graphs.}
+\label{fig:flowerror}
+\end{figure}
+
+\begin{figure*}[t]
+	\begin{center}
+		\input{figure/fig_latRestRel.tex}
+	\end{center}
+	\caption{The relative latency overhead of the functions in \helloapp and the microbenchmark function. Valve proxies network requests only in functions marked with an asterisk. Y-axis is truncated at 5.}
+	\label{fig:restrel}
+\end{figure*}
+
+\end{document}

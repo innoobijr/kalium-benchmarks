@@ -7,3 +7,5 @@ functions:
     lang: node10-express
     handler: ./product-photos-2-message
     image: innocentjr1995/product-photos-2-message:latest
+    annotations:
+      com.openfaas.profile: test

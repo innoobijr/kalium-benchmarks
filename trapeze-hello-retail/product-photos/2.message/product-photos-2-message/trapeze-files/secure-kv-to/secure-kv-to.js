@@ -7,7 +7,7 @@ class SecureKV_TO {
             host: h,
             user: u,
             password: pwd,
-            database: "securekvto"
+            database: "helloRetail"
         }));
         if (tbl && typeof tbl === 'string') {
             this.table = tbl;

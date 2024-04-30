@@ -1,12 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://192.168.99.101:31112
+  gateway: http://127.0.0.1:8080
 functions:
   valve-product-photos-master:
     lang: node10-express
     handler: ./master
-    image: prabkumar/valve-product-photos-master:latest
+    image: innocentjr1995/valve-product-photos-master:latest
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable
@@ -14,12 +14,14 @@ functions:
     environment:
       DBNAME: 'helloRetail'
       TABLE_CREDIT_CARDS_NAME: 'creditCardsName'
-      HOST: 'mysql.default.svc.cluster.local'
+      HOST: 'mysql.openfaas-fn.svc.cluster.local'
       USER: 'abc'
       PASS: 'xyz'
-      URL_ASSIGN: 'http://gateway.openfaas:8080/function/valve-product-photos-assign' 
-      URL_MESSAGE: 'http://gateway.openfaas:8080/function/valve-trapeze-product-photos-2-message'
-      URL_RECORD: 'http://gateway.openfaas:8080/function/valve-product-photos-record'
+      URL_ASSIGN: 'http://gateway.openfaas:8080/function/valve-product-photos-1-assign' 
+      URL_MESSAGE: 'http://gateway.openfaas:8080/function/valve-product-photos-2-message'
+      URL_RECORD: 'http://gateway.openfaas:8080/function/valve-product-photos-2-record'
       URL_RECEIVE: 'http://gateway.openfaas:8080/function/valve-product-photos-3-receive'
       URL_SUCCESS: 'http://gateway.openfaas:8080/function/valve-product-photos-4-success'
       URL_REPORT: 'http://gateway.openfaas:8080/function/valve-product-photos-6-report'
+    annotations:
+      com.openfaas.profile: test

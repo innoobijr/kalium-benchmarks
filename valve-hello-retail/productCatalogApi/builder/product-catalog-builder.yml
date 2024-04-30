@@ -6,7 +6,7 @@ functions:
   valve-product-catalog-builder:
     lang: node10-express
     handler: ./trapeze-product-catalog-builder
-    image: prabkumar/valve-trapeze-product-catalog-builder:latest
+    image: dsirone/valve-trapeze-product-catalog-builder:latest
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable
@@ -16,7 +16,7 @@ functions:
       TABLE_PRODUCT_CATEGORY_NAME: 'productCategory'
       TABLE_PRODUCT_CATALOG_NAME: 'productCatalog'
       TABLE_PRODUCT_PRICE_NAME: 'productPrice'
-      HOST: 'mysql.default.svc.cluster.local'
+      HOST: 'mysql.openfaas-fn.svc.cluster.local'
       USER: 'abc'
       PASS: 'xyz'
       

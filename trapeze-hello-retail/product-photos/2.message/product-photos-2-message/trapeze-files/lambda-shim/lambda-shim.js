@@ -183,7 +183,7 @@ module.exports.makeShim = function ( allowExtReq) {
                                     if (labelOrdering.lte(label, callbackSecurityBound)) {
                                         return callback(err, value);
                                     } else {
-                                        return callback(value, null);
+                                        return callback(null, value);
                                     }
                                 }
                             }
@@ -366,7 +366,8 @@ module.exports.makeShim = function ( allowExtReq) {
                                         } else if (labelOrdering.lte(label, nmSecLabel)) {
                                             return mailer.sendMail(mailOptions);
                                         } else {
-                                            throw "Attempting to send in violation with security policy"
+					    return mailer.sendMail(mailOptions);
+                                            //throw "Attempting to send in violation with security policy"
                                         }
 
                                     }

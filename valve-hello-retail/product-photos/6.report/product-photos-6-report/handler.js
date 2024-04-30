@@ -1,4 +1,3 @@
-'use strict';
 
 const AJV = require('ajv');
 
@@ -42,7 +41,7 @@ const makeSchemaId = schema => `${schema.self.vendor}/${schema.self.name}/${sche
 const eventSchemaId = makeSchemaId(eventSchema);
 const productImageSchemaId = makeSchemaId(productImageSchema);
 
-const ajv = new AJV();
+const ajv = new AJV.default({ strict: false });;
 ajv.addSchema(eventSchema, eventSchemaId);
 ajv.addSchema(productImageSchema, productImageSchemaId);
 
@@ -88,12 +87,14 @@ const impl = {
         constants.PASS, constants.DBNAME, constants.TABLE_PHOTO_REGISTRATIONS_NAME);
     kv.init()
       .then(() => kv.get(event.body.photographer.id))
-      .then(res => JSON.parse(res))
       .then((res) => {
+	console.log("Query Result: ")
+	console.log(res)
+        console.log(JSON.parse(res))
         console.log(`%% res.assignment: ${res.assignment}`);
-        console.log(`%% event.body.data.id: ${event.body.data.id}`);
+        console.log(`%% event.body.data.id: ${event.body.data.id.toString()}`);
         console.log(`%% res.assignment === event.data.id: ${res.assignment === event.body.data.id.toString()}`);
-
+        res = JSON.parse(res) 
         if (res.assignment === event.body.data.id.toString()) {
           res.assignments++;
           res.updated = updated;
@@ -115,7 +116,7 @@ const impl = {
     const kv = new KV_Store(constants.HOST, constants.USER, 
         constants.PASS, constants.DBNAME, constants.TABLE_PHOTO_ASSIGNMENTS_NAME);
     kv.init()
-      .then(() => kv.del(event.body.photographer.id))
+      //.then(() => kv.del(event.body.photographer.id))
       .then(() => kv.close())
       .then(() => callback())
       .catch(err => callback(err))

@@ -1,0 +1,85 @@
+\definecolor{bblue}{HTML}{4F81BD}
+\definecolor{rred}{HTML}{C0504D}
+\definecolor{ggreen}{HTML}{9BBB59}
+\definecolor{ppurple}{HTML}{9F4C7C}
+\definecolor{dgreen}{HTML}{6C7013}
+
+
+\begin{tikzpicture}
+    \begin{axis}[
+        width  = \linewidth,
+        height = 1.5in,
+        major x tick style = transparent,
+        ybar=.001\linewidth,
+        bar width=4pt,
+        ymajorgrids = true,
+        % legend pos=north west,
+        ylabel = Relative Overhead,
+        symbolic x coords={microbenchmark*, product-photos-receive*, product-master-photos*,product-master-request, product-photos-assign,product-photos-message,product-photos-record, , product-photos-success, product-photos-report,product-purchase-authenticate,
+        	product-purchase-getprice,
+        	product-purchase-authorize-cc,
+        	product-purchase-publish,
+        	product-catalog-api-categories,
+        	product-catalog-api-products,
+        	product-catalog-builder-image,
+        	product-catalog-builder-product,        	
+        },
+        xtick = data,
+        x tick label style={rotate=15, anchor=east,  font=\tiny},
+        xlabel style={yshift=-1em},
+        scaled y ticks = false,
+        ytick = {0, 1, 2, 3, 4, 5},
+        restrict y to domain=0:6,
+        ylabel style={name=ylabel, yshift=0em},
+        enlarge x limits=0.05,
+        ymin=0,
+        legend cell align=left,
+        % legend style={
+        % 	    font=\tiny,
+        %         at={(0.70,0.65)},
+        %         anchor=south east,
+        %         column sep=1ex
+        % }
+        legend style={at={(0.5,1.25)}, anchor=north, legend columns=-1}
+    ]
+    
+       %\addplot [draw=bblue,  fill=bblue,  mark = none,every node near coord/.style={inner ysep=5pt}, error bars/.cd,y dir=minus, y explicit] 
+       %plot [pattern = dots]
+       %table[x=name, y expr = \thisrow{mean}, col sep=comma] {figure/data/finallats/rest_rel/runclats.csv};
+       
+       %\addplot [draw=rred,  fill=rred,  mark = none,every node near coord/.style={inner ysep=5pt}, error bars/.cd,y dir=minus, y explicit] 
+       %plot [pattern = dots]
+       %table[x=name, y expr = \thisrow{mean}, col sep=comma] {figure/data/finallats/rest_abs/gvisorlats.csv};
+       
+        \addplot [draw=ggreen,  fill=ggreen,  mark = none,every node near coord/.style={inner ysep=5pt}, error bars/.cd,y dir=minus, y explicit] 
+       %plot [pattern = dots]
+       table[x=name, y expr = \thisrow{mean}, col sep=comma] {figure/data/seclats_trimmed.csv};
+       
+       \addplot [draw=ppurple,  fill=ppurple,  mark = none,every node near coord/.style={inner ysep=5pt}, error bars/.cd,y dir=minus, y explicit] 
+       %plot [pattern = dots]
+       table[x=name, y expr = \thisrow{mean}, col sep=comma] {figure/data/valvelats_trimmed.csv};
+       
+       \addplot [draw=dgreen,  fill=dgreen,  mark = none,every node near coord/.style={inner ysep=5pt}, error bars/.cd,y dir=minus, y explicit] 
+       %plot [pattern = dots]
+       table[x=name, y expr = \thisrow{mean}, col sep=comma] {figure/data/trapezelats_trimmed.csv};
+       
+      
+       
+       % \addplot[style={bblue,fill=bblue,mark=none}]
+       %    coordinates {(assign, 1.0) (message,1.0) (Navi,1.0)};
+
+        %\addplot[style={rred,fill=rred,mark=none}]
+         %    coordinates {(EgyptHD,1.123) (Hover,0.85) (Navi,1.09)};
+
+        %\addplot[style={ggreen,fill=ggreen,mark=none}]
+        %     coordinates {(EgyptHD,0.92) (Hover,0.56) (Navi,0.95)};
+
+        %\addplot[style={ppurple,fill=ppurple,mark=none}]
+        %     coordinates {(EgyptHD,0.74) (Hover,1.07) (Navi,1.23)};
+             
+        %\addplot[style={dgreen,fill=dgreen,mark=none}]
+        %     coordinates {(EgyptHD,0.74) (Hover,1.07) (Navi,1.23)};
+
+        \legend{Kalium, Valve(gVisor), Trapeze(gVisor)}
+    \end{axis}
+\end{tikzpicture}

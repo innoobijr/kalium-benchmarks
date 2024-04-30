@@ -27,7 +27,7 @@ const receiveRequestSchemaId = makeSchemaId(receiveRequestSchema);
 const photoAssignmentSchemaId = makeSchemaId(photoAssignmentSchema);
 
 
-const ajv = new AJV();
+const ajv = new AJV.default({ strict: false });
 ajv.addSchema(receiveRequestSchema, receiveRequestSchemaId);
 ajv.addSchema(photoAssignmentSchema, photoAssignmentSchemaId);
 

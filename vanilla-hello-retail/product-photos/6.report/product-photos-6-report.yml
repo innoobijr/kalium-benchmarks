@@ -1,12 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://node4.netes1.cs799-serverless-pg0.utah.cloudlab.us:31112
+  gateway: http://127.0.0.1:8080
 functions:
   product-photos-6-report:
     lang: node10-express
     handler: ./product-photos-6-report
-    image: dsirone/product-photos-6-report:latest
+    image: innocentjr1995/product-photos-6-report:latest
     read_timeout: 500 # seconds
     write_timeout: 500 # seconds
     exec_timeout: 0s # disable
@@ -18,3 +18,5 @@ functions:
       HOST: 'mysql.openfaas-fn.svc.cluster.local'
       USER: 'abc'
       PASS: 'xyz'
+    annotations:
+      com.openfaas.profile: test

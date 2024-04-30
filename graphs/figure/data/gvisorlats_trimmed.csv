@@ -1,0 +1,16 @@
+name, mean
+microbenchmark*, 1
+product-photos-receive*, 1
+product-photos-assign, 1
+product-photos-message, 1
+product-photos-record, 1
+product-photos-success, 1
+product-photos-report, 1
+product-purchase-authenticate, 1
+product-purchase-getprice, 1
+product-purchase-authorize-cc, 1
+product-purchase-publish, 1
+product-catalog-api-categories, 1
+product-catalog-api-products, 1
+product-catalog-builder-image, 1
+product-catalog-builder-product, 1

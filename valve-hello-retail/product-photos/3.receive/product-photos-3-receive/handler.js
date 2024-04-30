@@ -1,4 +1,3 @@
-'use strict';
 
 /* ********************************************************************
  *                 Hello Retail Minimization:
@@ -8,11 +7,12 @@
  *  - Changed returned values to a simple string instead of HTTP
  *    response.
  * ******************************************************************** */
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const AJV = require('ajv');
 const BbPromise = require('bluebird');
 const got = require('got');
 const url = require('url');
+const request = require('request-promise');
 
 const { KV_Store } = require('kv-store');
 const fs = require('fs');
@@ -27,7 +27,7 @@ const receiveRequestSchemaId = makeSchemaId(receiveRequestSchema);
 const photoAssignmentSchemaId = makeSchemaId(photoAssignmentSchema);
 
 
-const ajv = new AJV();
+const ajv = new AJV.default({ strict: false });
 ajv.addSchema(receiveRequestSchema, receiveRequestSchemaId);
 ajv.addSchema(photoAssignmentSchema, photoAssignmentSchemaId);
 
@@ -128,7 +128,7 @@ const impl = {
       return BbPromise.resolve(event)
     }
   },
-  getResources: results => BbPromise.all([
+  getResources: (results) => BbPromise.all([
     impl.getImageFromEvent(results),
     impl.getAssignment(results),
 
@@ -138,20 +138,29 @@ const impl = {
    * @param results The event representing the HTTPS request.
    */
   getImageFromEvent: (results) => {
-      console.log('******** getImageFromEvent ********');
+    console.log('******** getImageFromEvent ********');
     const resultsData = results.body;
     const uri = url.parse(resultsData.MediaUrl0);
-    
+    return request({
+                url: uri
+                ,method: 'GET'
+	}).then(
+		res => BbPromise.resolve({
+          		contentType: resultsData.MediaContentType0,
+          		data: res,
+        	})
+	)
+  },
+
+/*
     return got.get(uri, { encoding: null }).then(
       res => 
         BbPromise.resolve({
           contentType: resultsData.MediaContentType0,
           data: res.body,
         })
-
-      )
-   
-  },
+      
+    )*/
   /**
    * The request doesn't contain any of the original product creation event that caused the assignment.  Obtain the
    * assignment associated with the number that this message/image is being received from.
@@ -160,7 +169,7 @@ const impl = {
   getAssignment: (results) => {
 
     console.log('******** get assignment *********');
-    
+
     const resultsData = results.body;
 
     const kv = new KV_Store(constants.HOST, constants.USER, 
@@ -170,6 +179,8 @@ const impl = {
       .then(() => kv.get(resultsData.From)) 
       .then(res => kv.close().then(() => res))
       .then((res) => {
+	console.log("Gonna Parse")
+	console.log(res)
         const parsedRes = JSON.parse(res);
         parsedRes.id = resultsData.From;
         return parsedRes;

@@ -1,4 +1,3 @@
-'use strict';
 
 /**
  * Handle the success of the process to obtain a photograph from a photographer

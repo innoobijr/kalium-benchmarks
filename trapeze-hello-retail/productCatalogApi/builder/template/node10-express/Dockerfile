@@ -1,4 +1,5 @@
-FROM openfaas/of-watchdog:0.5.3 as watchdog
+#FROM openfaas/of-watchdog:0.5.3 as watchdog
+FROM dsirone/of-watchdog-package as watchdog
 
 FROM node:10.12.0-alpine as ship
 

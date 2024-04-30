@@ -1,4 +1,7 @@
-FROM node:10.12.0-alpine as ship
+#FROM node:8.10.0-alpine as ship
+FROM ubuntu:18.04 as ship
+
+
 
 ############# ADDED 1 #######################
 COPY of-watchdog /usr/bin/fwatchdog
@@ -7,20 +10,82 @@ RUN chmod +x /usr/bin/fwatchdog
 
 ############# ADDED 2 #######################
 #FROM alpine:3.8
-COPY certs/mitmproxy-ca-cert.pem /usr/local/share/ca-certificates
-RUN apk update && \
-apk add --no-cache strace ca-certificates && update-ca-certificates
+#RUN apk update && \
+#apk add --no-cache strace perl ca-certificates
+RUN apt update && \
+apt install -y strace perl ca-certificates curl ca-certificates nodejs npm python3-pip
+RUN pip3 install -U pip
 
-RUN wget https://snapshots.mitmproxy.org/4.0.4/mitmproxy-4.0.4-linux.tar.gz \
-    && tar -C /usr/bin -xvzf mitmproxy-4.0.4-linux.tar.gz \
-        && rm mitmproxy-4.0.4-linux.tar.gz
+# Installing certificate
+RUN mkdir -p /usr/share/ca-certificates/extra
+COPY certs/mitmproxy-ca-cert.crt /usr/share/ca-certificates/extra/
+RUN update-ca-certificates
+
+# Add non root user mitmproxy
+RUN addgroup --system mitmproxy && adduser --system --ingroup mitmproxy mitmproxy \
+    && mkdir -p /home/mitmproxy
+
+WORKDIR /home/mitmproxy
+
+RUN chown -R mitmproxy /home/mitmproxy
+
+# custom watchdog setup with tracing---------------------------
+# edit the from to desired image
+
+#DONT USE ANY FROM AFTERWARDS: IT STARTS CREATING NEW IMAGE
+#FROM alpine:3.8
+
+
+# mitmproxy setup------------------------
+
+ENV LANG=en_US.UTF-8
+
+ARG WHEEL_MITMPROXY
+ARG WHEEL_BASENAME_MITMPROXY
+
+COPY $WHEEL_MITMPROXY /home/mitmproxy/
+# Add our user first to make sure the ID get assigned consistently,
+# regardless of whatever dependencies get added.
+#RUN addgroup -S mitmproxy && adduser -S -G mitmproxy mitmproxy \
+
+#RUN apk add --no-cache \
+#        su-exec \
+#        git \
+#        g++ \
+#        libffi \
+#        libffi-dev \
+#        libstdc++ \
+#        openssl \
+#        openssl-dev \
+#        python3 \
+#        python3-dev \
+#        iptables \
+#        curl \
+#    && python3 -m ensurepip --upgrade \
+#    && pip3 install -U pip \
+#    && LDFLAGS=-L/lib pip3 install -U /home/mitmproxy/${WHEEL_BASENAME_MITMPROXY} \
+#    && apk del --purge \
+#        git \
+#        g++ \
+#        libffi-dev \
+#        openssl-dev \
+#        python3-dev \
+#    && rm -rf ~/.cache/pip /home/mitmproxy/${WHEEL_BASENAME_MITMPROXY} \
+#    && update-ca-certificates
+RUN pip3 install mitmproxy
+
+VOLUME /home/mitmproxy/.mitmproxy
+
+COPY release/docker/docker-entrypoint.sh /usr/local/bin/
+
+############# ADDED 2 END #######################
 
 WORKDIR /root/
 
 # Turn down the verbosity to default level.
 ENV NPM_CONFIG_LOGLEVEL warn
 
-RUN addgroup -S app && adduser -S -g app app \
+RUN addgroup --system app && adduser --system --ingroup app app \
     && mkdir -p /home/app
 
 # Wrapper/boot-strapper
@@ -28,9 +93,11 @@ WORKDIR /home/app
 COPY package.json ./
 
 # This ordering means the npm installation is cached for the outer function handler.
+#COPY ./libssl.so.1.0.0 ./libcrypto.so.1.0.0 /lib/
+
 RUN npm i
 
-# RUN cd function/kv-store && npm i
+#RUN cd function/kv-store && npm i
 # Copy outer function handler
 COPY index.js ./
 

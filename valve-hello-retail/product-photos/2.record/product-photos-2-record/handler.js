@@ -29,22 +29,22 @@ const impl = {
     const updated = Date.now();
     console.log('Reached inside putAssignment');
     const kv = new KV_Store(constants.HOST, constants.USER, 
-      constants.PASS, constants.DBNAME, constants.TABLE_PHOTO_ASSIGNMENTS_NAME);
-      console.log('event: \n')
-      console.log(event);
-
-      var storedValues = JSON.stringify({
-        updatedBy: event.body.origin,
-        taskToken: event.body.data.tasks.taskToken,
-        taskEvent: event.body.data.photographer.id,
-        status: 'pending'
+    constants.PASS, constants.DBNAME, constants.TABLE_PHOTO_ASSIGNMENTS_NAME);
+    console.log('event: \n')
+    console.log(event);
+    
+    var storedValues = JSON.stringify({
+          updatedBy: event.body.origin,
+          taskToken: event.body.data.tasks.taskToken,
+          taskEvent: event.body.data.photographer.id,
+          status: 'pending'
     })
-
+    
     kv.init()
       .then(() => kv.put(
         event.body.data.photographer.phone,
         storedValues
-      ))
+        ))
       .then(() => kv.close())
       .then(res => callback(null, res))
       .catch(err => callback(null, err))
@@ -67,7 +67,7 @@ const impl = {
 // }
 module.exports = (event, context, callback) => {
   console.log(JSON.stringify(event));
-
+    
       impl.putAssignment(event, (putErr) => {
         if (putErr) {
           impl.failTask(event.body, putErr, callback)
