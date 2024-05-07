@@ -1,12 +1,12 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://node4.netes2.cs799-serverless-pg0.wisc.cloudlab.us:31112
+  gateway: http://127.0.0.1:8080
 functions:
   trapeze-product-photos-3-receive:
     lang: node10-express
     handler: ./product-photos-3-receive
-    image: dsirone/trapeze-product-photos-3-receive:latest
+    image: innocentjr1995/trapeze-product-photos-3-receive:latest
     read_timeout: 1000s # seconds
     write_timeout: 1000s # seconds
     exec_timeout: 1000s # disable

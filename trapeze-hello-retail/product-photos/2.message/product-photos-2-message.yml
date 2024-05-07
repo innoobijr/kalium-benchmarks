@@ -1,11 +1,11 @@
 version: 1.0
 provider:
   name: openfaas
-  gateway: http://node4.netes2.cs799-serverless-pg0.wisc.cloudlab.us:31112
+  gateway: http://127.0.0.1:8080
 functions:
   trapeze-product-photos-2-message:
     lang: node10-express
     handler: ./product-photos-2-message
-    image: dsirone/trapeze-product-photos-2-message:latest
+    image: innocentjr1995/trapeze-product-photos-2-message:latest
     annotations:
       com.openfaas.profile: test
