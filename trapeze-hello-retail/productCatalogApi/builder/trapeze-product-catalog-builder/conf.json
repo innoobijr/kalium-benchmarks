@@ -1,6 +1,6 @@
 {
   "unsecLambda" : "/home/app/function/catalog.js",
-  "secLambdaFullPath" : "/home/app/function/handlerjs",
+  "secLambdaFullPath" : "/home/app/function/handler.js",
   "handlers" : ["processKinesisEvent"],
   "runFromGET" : true,
   "usingPO" : false,

@@ -12,6 +12,16 @@ const nodemailer = require("nodemailer");
 const got = require('got');
 const fetch = require('node-fetch');
 
+const util = require('util');
+
+const log_file = fs.createWriteStream(__dirname + '/debug.log', {flags : 'w'});
+const log_stdout = process.stdout;
+
+console.log = function(d) { //
+  log_file.write(util.format(d) + '\n');
+  log_stdout.write(util.format(d) + '\n');
+};
+
 const rmFilesInDir = function (dirPath) {
     try {
         const files = fs.readdirSync(dirPath);
@@ -54,8 +64,16 @@ module.exports.makeShim = function ( allowExtReq) {
 
         console.log('Above exp')
         return function (event, context, callback) {
+		var log_file = fs.createWriteStream(__dirname + '/debug.log', {flags : 'w'});
+		var log_stdout = process.stdout;
 
-            let label;
+		console.log = function(d) { //
+  			log_file.write(util.format(d) + '\n');
+  			log_stdout.write(util.format(d) + '\n');
+		};
+
+
+	    let label;
             let callbackSecurityBound;
             let labelHistory = [];
 
@@ -236,7 +254,7 @@ module.exports.makeShim = function ( allowExtReq) {
                                     close: () => skv.close(),
                                     put: (k, v) => skv.put(k, v, label),
                                     get: (k) => {
-                                        return skv.get(k, label)
+                                        return skv.get(k, "public")
                                             .then((res) => {
                                                 if (res.length > 0) {
                                                     return res[0].rowvalues;

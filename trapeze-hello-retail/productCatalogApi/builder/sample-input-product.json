@@ -5,11 +5,11 @@
      "price: ": "123",
      "data": {
      "schema": "com.nordstrom/product/create/1-0-0",
-     "id": "4579874",
+     "id": "9579874",
      "brand": "POLO RALPH LAUREN",
      "name": "Polo Ralph Lauren 3-Pack Socks",
      "description": "PAGE:/s/polo-ralph-lauren-3-pack-socks/4579874",
-     "category": "Socks for Men",
+     "category": "Snacks for Men",
      "price": "123"
    }
 }

@@ -9,7 +9,7 @@ if (fs.existsSync('/home/app/function/conf.json')) { // (probably) running on AW
     conf = JSON.parse(fs.readFileSync(__dirname.split('node_modules')[0] + 'conf.json', 'utf8'));
 }
 
-const kv = new KV_Store(conf.host, conf.user, conf.pass, 'userLabelMappingTable');
+const kv = new KV_Store(conf.host, conf.user, conf.pass, 'helloRetail', 'userLabelMappingTable');
 
 const authMapPromise = kv.init()
     .then(() => kv.entries())

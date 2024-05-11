@@ -1,8 +1,9 @@
 #FROM openfaas/of-watchdog:0.5.3 as watchdog
-FROM dsirone/of-watchdog-package as watchdog
+FROM ghcr.io/openfaas/of-watchdog:0.9.15 as watchdog
 
-#FROM node:10.12.0-alpine as ship
 FROM ubuntu:18.04 as ship
+#ROM node:10.12.0-alpine as ship
+#FROM node:21-alpine3.18 as ship
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
 RUN chmod +x /usr/bin/fwatchdog
