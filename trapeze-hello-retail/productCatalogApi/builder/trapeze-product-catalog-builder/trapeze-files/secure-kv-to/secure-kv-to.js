@@ -87,9 +87,10 @@ INSERT INTO ${this.table} (rowkey,rowvalues,label)
         `;
 
         console.log("** DEBUG: Secure K-V (TO) - Call to put.");
-        // console.log("** DEBUG: Secure K-V (TO) -   Key:   " + k + ".");
-        // console.log("** DEBUG: Secure K-V (TO) -   Value: " + v + ".");
-        // l = 'abc';
+        console.log("** DEBUG: Secure K-V (TO) -   Key:   " + k + ".");
+        console.log("** DEBUG: Secure K-V (TO) -   Value: " + v + ".");
+        console.log("** DEBUG: Secure K-V (TO) -   Label: " + l + ".");
+	    // l = 'abc';
         return this.con.queryAsync(sql,[k,v,l])
             .then((result) => {
                 console.log("** DEBUG: Secure K-V (TO) - Query successful - inserting values.");

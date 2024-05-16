@@ -426,10 +426,14 @@ module.exports.makeShim = function ( allowExtReq) {
             }
 
             p.then((l) => {
+
+		console.log("**** DEBUF[label]: Succeeded from promise")
+
                 if (l === undefined) {
                     // In case getting the label failed, run on behalf of 'bottom' (completely unprivileged).
                     label = labelOrdering.getBottom();
-                } else {
+	            console.log("**** DEBUF[label]: lable was undefined current label is " + label + ".")
+		} else {
                     label = l;
                 }
 
