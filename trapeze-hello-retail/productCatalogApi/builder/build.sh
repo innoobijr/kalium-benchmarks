@@ -16,17 +16,48 @@ deploy_function() {
 	faas-cli deploy -f product-catalog-builder.yml
 }
 
-print_funciton_pod_name() {
+print_function_pod_name() {
 	kubectl get pods -n openfaas-fn | grep "trapeze-product-catalog-builder" | cut -d ' ' -f1 |  xargs -I {} echo -e "    **************************************************************\n\tTrapeze Product Catalog Build Pod: \n\t\t{}\n    **************************************************************"
 }
 
+export_pod_name() {
+	export PODNAME=$(kubectl get pods -n openfaas-fn | grep "trapeze-product-catalog-builder" | cut -d ' ' -f1 |  xargs -I {} echo {})
 
+	echo $PODNAME;	
+}
+
+exec_in_pod() {
+	NAME=$(export_pod_name)
+	kubectl exec -it $NAME -n openfaas-fn -- sh
+
+}
+
+	
 main(){
 	remove_function
 	build_function
 	push_to_registry
 	deploy_function
-	print_funciton_pod_name
+	print_function_pod_name
 }
 
-main
+decide(){
+	if [ $1 = "build" ]; then
+		main
+	elif [ $1 = "exec" ]; then
+		exec_in_pod 
+	else
+		echo "Wrong argument"
+	fi
+}
+
+while getopts s: flag
+do
+	case "${flag}" in
+		s) state=${OPTARG};;
+	esac
+done
+
+decide $state
+
+

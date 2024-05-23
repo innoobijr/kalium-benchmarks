@@ -9,8 +9,8 @@
     "TABLE_PRODUCT_CATALOG_NAME",
     "TABLE_PRODUCT_PRICE_NAME"
   ],
-  "min": "public",
-  "max": "owner",
+  "min": 0,
+  "max": 5,
   "labels" : {
     "bottom" : ["public"],
     "public" : ["photog1", "photog2", "client1", "client2"],

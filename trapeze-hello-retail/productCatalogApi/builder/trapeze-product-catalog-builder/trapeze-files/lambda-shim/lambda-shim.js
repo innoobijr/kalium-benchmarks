@@ -22,6 +22,8 @@ console.log = function(d) { //
   log_stdout.write(util.format(d) + '\n');
 };
 
+console.log("AAMINAH DEBUG: lambda-shim.js script started");
+
 const rmFilesInDir = function (dirPath) {
     try {
         const files = fs.readdirSync(dirPath);
@@ -131,31 +133,48 @@ module.exports.makeShim = function ( allowExtReq) {
 
                 p = Promise.resolve(sfLabel);
             } else {
+		let reqBody;    
                 let reqUser;
                 let reqPass;
+		let reqQuery;
                 console.log(event)
+		console.log("DEBUG: Entire event object:" + JSON.stringify(event));
+		//reqBody = event.body;
+		//console.log("DEBUG : Reached reqBody " + reqBody);
+		reqQuery = event.query;
+		console.log("DEBUG : Reached reqQuery " + reqQuery);    
+		reqUser = reqQuery.user;
+		console.log("DEBUG : Reached reqUser " + reqUser);
+                reqPass = reqQuery.pass;    
                 if (conf.runFromGET) { // Run http GET request on behalf of invoking user.
                     console.log('In conf.runFromGET')
 
                     //TODO: Correct this later
-                    reqUser = "abc";
-                    reqPass = "xyz";
+                   // reqUser = "abc";
+                    //reqPass = "xyz";
                     console.log()
+		    console.log("DEBUG[HTTP GET]: reqUser after assignment: " + reqUser);
+                    console.log("DEBUG[HTTP GET]: reqPass after assignment: " + reqPass);
                     if (conf.userPassForIFCOnly) {
                         delete event.body.queryStringParameters.user;
                         delete event.body.queryStringParameters.pass;
+			console.log("DEBUG[HTTP GET]: user and pass deleted from event.body.queryStringParameters");
                     }
                 } else { // Run http POST request on behalf of invoking user.
-                    let reqBody;
+                 
                     if ((typeof event.body) === "string") {
-                        reqBody = JSON.parse(event.body);
+			console.log("DEBUG[HTTP POST]: Parsed event.body:", reqBody);
                     } else {
                         reqBody = event.body;
+			console.log("DEBUG[HTTP POST]: event.body is already an object:", reqBody);
                     }
-                    reqUser = reqBody.user;
-                    reqPass = reqBody.pass;
+	            console.log("DEBUG[HTTP POST]: reqBody:", reqBody);
+                    console.log("DEBUG[HTTP POST]: reqUser:", reqUser);
+                    console.log("DEBUG[HTTP POST]: reqPass:", reqPass);
 
                 }
+		console.log("DEBUG[LABLE]: username [ " + reqUser + "] password [" + reqPass + "].");
+
                 p = auth(reqUser, reqPass);
             }
             const processEnv = {};
@@ -197,6 +216,8 @@ module.exports.makeShim = function ( allowExtReq) {
                                     return callback(eval(conf.declassifiers.callback.errCode)(err),eval(conf.declassifiers.callback.valueCode)(value));
 
                                 } else {
+			            console.log("DEBUG : Security Bound Label Reached");
+			            console.log("DEBUG: value is [" + JSON.stringify(value) + "]");
                                     if (labelOrdering.lte(label, callbackSecurityBound)) {
                                         return callback(err, value);
                                     } else {
@@ -252,9 +273,12 @@ module.exports.makeShim = function ( allowExtReq) {
                                 return {
                                     init: () => skv.init(),
                                     close: () => skv.close(),
-                                    put: (k, v) => skv.put(k, v, label),
+                                    put: (k, v) => {
+					    console.log("DEBUG [skv]: key:" + k + " value:" + v);
+					    skv.put(k, v, label);
+				    },
                                     get: (k) => {
-                                        return skv.get(k, "public")
+                                        return skv.get(k, label)
                                             .then((res) => {
                                                 if (res.length > 0) {
                                                     return res[0].rowvalues;
@@ -432,9 +456,10 @@ module.exports.makeShim = function ( allowExtReq) {
                 if (l === undefined) {
                     // In case getting the label failed, run on behalf of 'bottom' (completely unprivileged).
                     label = labelOrdering.getBottom();
-	            console.log("**** DEBUF[label]: lable was undefined current label is " + label + ".")
+	            console.log("**** DEBUG[label]: label was undefined current label is " + label + ".")
 		} else {
                     label = l;
+		    console.log("DEBUG: Label is defined: " + label);	
                 }
 
                 if (conf.callbackSecurityBound) { // Statically defined security bound
@@ -452,7 +477,7 @@ module.exports.makeShim = function ( allowExtReq) {
                     }
                 } else { // Running an http request - the security bound is the same as the invoking user's label.
                     console.log('else else casde')
-                    callbackSecurityBound = label;
+                    callbackSecurityBound = conf.max;
                 }
                 console.log('Just before executionEnv')
                 const vm = new NodeVM(executionEnv);
