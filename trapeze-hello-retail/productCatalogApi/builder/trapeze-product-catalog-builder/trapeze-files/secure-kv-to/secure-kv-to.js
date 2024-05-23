@@ -30,7 +30,7 @@ CREATE TABLE ${this.table} (
         `;
 
         const addUpdateTrigger = `
-CREATE TRIGGER TO_put_semantics BEFORE UPDATE ON ${this.table} 
+CREATE TRIGGER TO_put_semantics_${this.table} BEFORE UPDATE ON ${this.table} 
     FOR EACH ROW
     BEGIN
         IF OLD.label < NEW.label THEN
